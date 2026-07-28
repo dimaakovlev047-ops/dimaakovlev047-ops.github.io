@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Детский клуб «Солнышко»</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== ШАПКА ===== -->
+<header>
+  <div class="container nav-wrap">
+    <a href="#top" class="logo" aria-label="Детский клуб Солнышко, на главную">☀️ Солнышко<span class="dot">.</span></a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <a href="#about" class="nav-link">О нас</a>
+      <a href="#directions" class="nav-link">Направления</a>
+      <a href="#schedule" class="nav-link">Расписание</a>
+      <a href="#reviews" class="nav-link">Отзывы</a>
+      <a href="#contacts" class="nav-link">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== ГЕРОЙ ===== -->
+<section class="hero" id="top">
+  <div class="cloud c1" data-depth="18" aria-hidden="true">
+    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/><ellipse cx="80" cy="38" rx="18" ry="14"/></svg>
+  </div>
+  <div class="cloud c2" data-depth="10" aria-hidden="true">
+    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/></svg>
+  </div>
+  <div class="cloud c3" data-depth="24" aria-hidden="true">
+    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/><ellipse cx="80" cy="38" rx="18" ry="14"/></svg>
+  </div>
+  <div class="cloud c4" data-depth="14" aria-hidden="true">
+    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/></svg>
+  </div>
+
+  <div class="container content" id="about">
+    <span class="eyebrow">🎈 Приём детей от 3 до 12 лет</span>
+
+    <div class="mascot-wrap" id="mascot" title="Привет! Я Лучик 👋" role="img" aria-label="Персонаж клуба — солнечный лучик с улыбкой">
+      <svg viewBox="0 0 220 220">
+        <g class="ray" fill="#FFC947">
+          <rect x="105" y="4" width="10" height="26" rx="5"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(30 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(60 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(90 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(120 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(150 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(180 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(210 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(240 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(270 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(300 110 110)"/>
+          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(330 110 110)"/>
+        </g>
+        <circle cx="110" cy="110" r="62" fill="#FFC947"/>
+        <circle cx="110" cy="110" r="62" fill="none" stroke="#FFA700" stroke-width="4"/>
+        <g class="eye"><ellipse cx="88" cy="104" rx="6" ry="8" fill="#3D2C56"/></g>
+        <g class="eye"><ellipse cx="132" cy="104" rx="6" ry="8" fill="#3D2C56"/></g>
+        <circle cx="80" cy="120" r="8" fill="#FF6F59" opacity="0.55"/>
+        <circle cx="140" cy="120" r="8" fill="#FF6F59" opacity="0.55"/>
+        <path d="M90 130 Q110 150 130 130" stroke="#3D2C56" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h1>Детский клуб <span class="accent">«Солнышко»</span></h1>
+    <p class="desc">Танцы, рисование, английский, шахматы, лепка и подготовка к школе — в маленьких группах, с педагогами, которые любят своё дело. Наведите курсор на Лучика, он подмигнёт 😉</p>
+
+    <div class="hero-actions">
+      <button class="btn" onclick="openModal()">🎯 Записаться на пробное</button>
+      <a href="#directions" class="btn outline">Выбрать направление</a>
+    </div>
+
+    <div class="badges">
+      <span class="badge">✅ Пробное занятие — бесплатно</span>
+      <span class="badge">👶 Группы до 8 детей</span>
+      <span class="badge">⭐ Опытные педагоги</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== НАПРАВЛЕНИЯ ===== -->
+<section id="directions" class="section">
+  <div class="container">
+    <p class="eyebrow-sm">Чем заняться</p>
+    <h2 class="section-title reveal">Направления для детей 3–12 лет</h2>
+    <p class="section-sub reveal">Нажмите на возраст, чтобы увидеть подходящие занятия</p>
+
+    <div class="filters reveal">
+      <button class="filter-btn active" data-age="all" aria-pressed="true">Все возрасты</button>
+      <button class="filter-btn" data-age="3" aria-pressed="false">3–5 лет</button>
+      <button class="filter-btn" data-age="6" aria-pressed="false">6–9 лет</button>
+      <button class="filter-btn" data-age="10" aria-pressed="false">10–12 лет</button>
+    </div>
+
+    <div class="cards reveal" id="cardsGrid">
+      <div class="card" data-min="4" data-max="10">
+        <div class="icon-circle" aria-hidden="true">💃</div>
+        <h3>Танцы</h3>
+        <div class="meta">4–10 лет · от 600 ₽</div>
+        <button class="btn-mini" onclick="openModal('Танцы')">Записаться</button>
+      </div>
+      <div class="card" data-min="3" data-max="9">
+        <div class="icon-circle" aria-hidden="true">🎨</div>
+        <h3>Рисование</h3>
+        <div class="meta">3–9 лет · от 550 ₽</div>
+        <button class="btn-mini" onclick="openModal('Рисование')">Записаться</button>
+      </div>
+      <div class="card" data-min="5" data-max="12">
+        <div class="icon-circle" aria-hidden="true">🇬🇧</div>
+        <h3>Английский язык</h3>
+        <div class="meta">5–12 лет · от 700 ₽</div>
+        <button class="btn-mini" onclick="openModal('Английский язык')">Записаться</button>
+      </div>
+      <div class="card" data-min="6" data-max="12">
+        <div class="icon-circle" aria-hidden="true">♟️</div>
+        <h3>Шахматы</h3>
+        <div class="meta">6–12 лет · от 600 ₽</div>
+        <button class="btn-mini" onclick="openModal('Шахматы')">Записаться</button>
+      </div>
+      <div class="card" data-min="3" data-max="8">
+        <div class="icon-circle" aria-hidden="true">🧸</div>
+        <h3>Лепка</h3>
+        <div class="meta">3–8 лет · от 550 ₽</div>
+        <button class="btn-mini" onclick="openModal('Лепка')">Записаться</button>
+      </div>
+      <div class="card" data-min="5" data-max="7">
+        <div class="icon-circle" aria-hidden="true">🎓</div>
+        <h3>Подготовка к школе</h3>
+        <div class="meta">5–7 лет · от 750 ₽</div>
+        <button class="btn-mini" onclick="openModal('Подготовка к школе')">Записаться</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== РАСПИСАНИЕ ===== -->
+<section id="schedule" class="section alt">
+  <div class="container">
+    <p class="eyebrow-sm">Когда приходить</p>
+    <h2 class="section-title reveal">Расписание занятий</h2>
+    <p class="section-sub reveal">Выберите день недели, чтобы посмотреть занятия</p>
+
+    <div class="day-tabs reveal" id="dayTabs" role="tablist">
+      <button class="day-tab active" data-day="0" role="tab" aria-selected="true">Пн</button>
+      <button class="day-tab" data-day="1" role="tab" aria-selected="false">Вт</button>
+      <button class="day-tab" data-day="2" role="tab" aria-selected="false">Ср</button>
+      <button class="day-tab" data-day="3" role="tab" aria-selected="false">Чт</button>
+      <button class="day-tab" data-day="4" role="tab" aria-selected="false">Пт</button>
+      <button class="day-tab" data-day="5" role="tab" aria-selected="false">Сб</button>
+    </div>
+
+    <div class="schedule-panel reveal" id="schedulePanel" role="tabpanel"></div>
+  </div>
+</section>
+
+<!-- ===== ОТЗЫВЫ ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+    <p class="eyebrow-sm">Нам доверяют</p>
+    <h2 class="section-title reveal">Отзывы родителей</h2>
+    <p class="section-sub reveal">То, что говорят о нас родители наших воспитанников</p>
+
+    <div class="review-carousel reveal" aria-label="Карусель отзывов">
+      <div class="review-track">
+        <div class="review-slides" id="reviewSlides" aria-live="polite">
+          <div class="review">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="text">«Дочка ходит на танцы уже полгода — бежит с горящими глазами. Педагоги находят подход к каждому ребёнку!»</div>
+            <div class="name">Елена Кузнецова</div>
+          </div>
+          <div class="review">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="text">«Сын занимается шахматами. Стал усидчивее, с удовольствием решает логические задачки дома.»</div>
+            <div class="name">Дмитрий Соколов</div>
+          </div>
+          <div class="review">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="text">«Уютная атмосфера, чисто и безопасно. Английский даётся легко благодаря игровому формату.»</div>
+            <div class="name">Мария Петрова</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-controls">
+        <button class="review-arrow" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
+        <div class="review-dots" id="reviewDots" role="tablist"></div>
+        <button class="review-arrow" id="reviewNext" aria-label="Следующий отзыв">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КОНТАКТЫ ===== -->
+<section id="contacts" class="section alt">
+  <div class="container">
+    <p class="eyebrow-sm">Ждём вас</p>
+    <h2 class="section-title reveal">Контакты</h2>
+    <p class="section-sub reveal">Приходите на бесплатное пробное занятие!</p>
+
+    <div class="contacts reveal">
+      <div class="contact-info">
+        <div class="row">
+          <i role="img" aria-label="Телефон">📞</i>
+          <div><strong>Телефон</strong><br><a href="tel:+79991234567">+7 (909) 171-15-99</a></div>
+        </div>
+        <div class="row">
+          <i role="img" aria-label="Email">✉️</i>
+          <div><strong>Email</strong><br><a href="mailto:leonckik1@gmail.com">leonckik1@gmail.com</a></div>
+        </div>
+        <div class="row">
+          <i role="img" aria-label="Адрес">📍</i>
+          <div><strong>Адрес</strong><br>г. Курган, ул.Куйбышева, д.2 </div>
+        </div>
+        <div class="row">
+          <i role="img" aria-label="Режим работы">🕐</i>
+          <div><strong>Режим работы</strong><br>Пн–Сб: 9:00 – 20:00</div>
+        </div>
+        <button class="btn" style="width:100%; justify-content:center;" onclick="openModal()">🎁 Записаться на пробное</button>
+      </div>
+      <div class="map">
+        <iframe src="https://yandex.ru/map-widget/v1/?text=Курган,%20ул.%20Куйбышева,%202&z=17" loading="lazy" title="Карта"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ФУТЕР ===== -->
+<footer>
+  <div class="container">
+    <div class="logo">☀️ Солнышко</div>
+    <div class="foot-links">
+      <a href="#about">О нас</a>
+      <a href="#directions">Направления</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <p class="fine">© 2026 Детский клуб «Солнышко». Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- ===== МОДАЛЬНОЕ ОКНО ЗАПИСИ ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="formView">
+      <h3>Запись на пробное занятие</h3>
+      <p class="sub" id="modalSub">Заполните форму — мы перезвоним в течение часа</p>
+      <form id="signupForm" onsubmit="return submitForm(event)">
+        <input type="text" id="parentName" placeholder="Имя родителя" required>
+        <input type="tel" id="parentPhone" placeholder="Телефон" required>
+        <select id="directionSelect">
+          <option value="">Выберите направление (по желанию)</option>
+          <option>Танцы</option>
+          <option>Рисование</option>
+          <option>Английский язык</option>
+          <option>Шахматы</option>
+          <option>Лепка</option>
+          <option>Подготовка к школе</option>
+        </select>
+        <button type="submit" class="btn">Отправить заявку</button>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successView">
+      <div class="big-icon">🎉</div>
+      <h3>Заявка отправлена!</h3>
+      <p class="sub">Мы свяжемся с вами в ближайшее время. До встречи в «Солнышке»!</p>
+      <button class="btn" onclick="closeModal()">Отлично</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
