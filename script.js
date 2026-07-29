@@ -1,3 +1,4 @@
+// ===== ОСНОВНЫЕ СКРИПТЫ САЙТА =====
 const burger = document.getElementById('burger');
 const mainNav = document.getElementById('mainNav');
 burger.addEventListener('click', () => {
@@ -108,12 +109,10 @@ function goToSlide(i){
     d.setAttribute('aria-selected', idx === current);
   });
 }
-
 function resetAutoSlide(){
   clearInterval(autoSlideInterval);
   autoSlideInterval = setInterval(() => goToSlide(current + 1), 5000);
 }
-
 for (let i=0;i<slideCount;i++){
   const d = document.createElement('button');
   d.className = 'review-dot' + (i===0 ? ' active' : '');
@@ -125,7 +124,6 @@ for (let i=0;i<slideCount;i++){
   });
   dotsWrap.appendChild(d);
 }
-
 prevBtn.addEventListener('click', () => {
   goToSlide(current - 1);
   resetAutoSlide();
@@ -134,7 +132,6 @@ nextBtn.addEventListener('click', () => {
   goToSlide(current + 1);
   resetAutoSlide();
 });
-
 goToSlide(0);
 autoSlideInterval = setInterval(() => goToSlide(current + 1), 5000);
 
@@ -164,7 +161,6 @@ function closeModal(){
   document.body.style.overflow = '';
   clearTimeout(closeTimeout);
 }
-
 modalOverlay.addEventListener('click', (e) => {
   if (e.target === modalOverlay) closeModal();
 });
@@ -202,46 +198,39 @@ document.getElementById('parentPhone').addEventListener('input', function(e) {
   this.value = formatted;
 });
 
-// ===== TELEGRAM БОТ (РАБОЧАЯ ФОРМА) =====
+// ===== ТЕЛЕГРАММ БОТ =====
 const BOT_TOKEN = '8966390707:AAFbAfMjBi4s2YYrcYzD2lw0HIusjs626QE';
-const CHAT_ID = '8054843106';
 
-const form = document.getElementById('signupForm');
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-if (!form) {
-    console.error('❌ Форма с id="signupForm" не найдена!');
-} else {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+    const name = document.getElementById('parentName').value;
+    const phone = document.getElementById('parentPhone').value;
+    const direction = document.getElementById('directionSelect').value;
 
-        const name = document.getElementById('parentName').value;
-        const phone = document.getElementById('parentPhone').value;
-        const direction = document.getElementById('directionSelect').value;
+    const message = `📋 *Новая заявка!*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🎯 Направление: ${direction}`;
 
-        const message = `📋 *Новая заявка!*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🎯 Направление: ${direction}`;
-
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: message,
-                parse_mode: 'Markdown'
-            })
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: 8054843106,
+            text: message,
+            parse_mode: 'Markdown'
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                alert('✅ Спасибо! Мы свяжемся с вами в течение 15 минут.');
-                form.reset();
-            } else {
-                alert('❌ Ошибка отправки. Попробуйте ещё раз.');
-                console.error('Ошибка:', data);
-            }
-        })
-        .catch(error => {
-            alert('❌ Ошибка сети. Проверьте подключение.');
-            console.error('Ошибка:', error);
-        });
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('📩 Ответ от Telegram:', data);
+        if (data.ok) {
+            alert('✅ Спасибо! Заявка отправлена. Проверь Telegram.');
+            this.reset();
+        } else {
+            alert('❌ Ошибка отправки: ' + JSON.stringify(data));
+        }
+    })
+    .catch(error => {
+        console.error('🔥 Ошибка:', error);
+        alert('❌ Ошибка сети: ' + error.message);
     });
-}
+});
