@@ -210,7 +210,7 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 
     const formData = new FormData(this);
 
-    fetch('https://formspree.io/f/mqkjpzqw', {
+    fetch('https://formspree.io/f/mwvgzrro', {
         method: 'POST',
         body: formData,
         headers: {
