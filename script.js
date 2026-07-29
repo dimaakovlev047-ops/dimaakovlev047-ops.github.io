@@ -215,7 +215,7 @@ if (!form) {
 
         const name = document.getElementById('parentName').value;
         const phone = document.getElementById('parentPhone').value;
-        const direction = document.getElementById('direction').value;
+        const direction = document.getElementById('directionSelect').value;
 
         const message = `📋 *Новая заявка!*\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n🎯 Направление: ${direction}`;
 
