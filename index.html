@@ -1,577 +1,888 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Евгения Яковлева — женский коуч</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: #FBF4EC;
-      color: #3E2E27;
-      line-height: 1.7;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Евгения Яковлева — женский коуч</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
 
-    header {
-      background: rgba(251, 244, 236, 0.95);
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(169, 100, 92, 0.15);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .header-wrap {
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #3E2E27;
-    }
-    .logo span { color: #A5645C; }
-    nav a {
-      color: #6B5750;
-      text-decoration: none;
-      margin-left: 24px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: #A5645C; }
+  :root{
+    --cream:      #FBF4EC;
+    --cream-deep: #F4E9DC;
+    --peach:      #F0C6AC;
+    --rose:       #C98A82;
+    --rose-deep:  #A5645C;
+    --sage:       #93A382;
+    --ink:        #3E2E27;
+    --ink-soft:   #6B5750;
+    --paper:      #FFFDFB;
+    --display: 'Playfair Display', serif;
+    --body: 'Open Sans', sans-serif;
+    --script: 'Caveat', cursive;
+    --radius: 22px;
+    --radius-sm: 14px;
+    --shadow: 0 18px 40px -20px rgba(62,46,39,0.28);
+    --wrap: 1120px;
+  }
 
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 5px;
-    }
-    .burger span {
-      width: 28px;
-      height: 2px;
-      background: #3E2E27;
-      border-radius: 2px;
-      transition: 0.3s;
-    }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 28px; }
+  h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:0.2px; }
 
-    section { padding: 70px 0; }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: #3E2E27;
-    }
-    .section-sub {
-      color: #6B5750;
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
-    .btn {
-      display: inline-block;
-      background: #C98A82;
-      color: #fff;
-      padding: 14px 36px;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      font-size: 1rem;
-    }
-    .btn:hover { background: #A5645C; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #C98A82;
-      color: #C98A82;
-    }
-    .btn-outline:hover { background: #C98A82; color: #fff; }
-    .btn-mint {
-      background: #8BA58B;
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(139, 165, 139, 0.3);
-    }
-    .btn-mint:hover { background: #6E8B6E; }
+  .eyebrow{
+    font-family:var(--script);
+    font-size:1.5rem;
+    color:var(--rose-deep);
+    display:block;
+    margin-bottom:4px;
+  }
+  .section-title{
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  .section-lead{
+    color:var(--ink-soft);
+    font-size:1.08rem;
+    max-width:620px;
+    margin-bottom:44px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:15px 34px;
+    border-radius:100px;
+    background:var(--rose);
+    color:#fff;
+    font-weight:600;
+    font-size:0.98rem;
+    box-shadow:0 14px 28px -12px rgba(169,100,92,0.55);
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .btn:hover{ background:var(--rose-deep); transform:translateY(-2px); box-shadow:0 18px 32px -12px rgba(169,100,92,0.6); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--rose-deep);
+    border:1.5px solid var(--rose);
+    box-shadow:none;
+  }
+  .btn-ghost:hover{ background:var(--rose); color:#fff; }
+  .btn-breathe{ animation:breathe 4.5s ease-in-out infinite; }
+  @keyframes breathe{
+    0%,100%{ box-shadow:0 14px 28px -12px rgba(169,100,92,0.55), 0 0 0 0 rgba(201,138,130,0.35); }
+    50%{ box-shadow:0 14px 28px -12px rgba(169,100,92,0.55), 0 0 0 14px rgba(201,138,130,0); }
+  }
+  .photo-placeholder{
+    aspect-ratio:4/5;
+    border-radius:var(--radius);
+    background:repeating-linear-gradient(135deg, var(--peach), var(--peach) 18px, #ecd3bd 18px, #ecd3bd 36px);
+    border:2px dashed var(--rose-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+    color:var(--rose-deep);
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+  .wave{ width:100%; line-height:0; }
+  .wave svg{ width:100%; height:60px; }
 
-    .hero {
-      padding: 80px 0 60px;
-      background: linear-gradient(180deg, #FBF4EC, #F4E9DC);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .hero-list {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-    .hero-list li {
-      padding: 6px 0;
-      color: #6B5750;
-      font-size: 1.05rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .hero-list li::before {
-      content: "◡";
-      color: #C98A82;
-      font-weight: 700;
-    }
-    .photo {
-      background: #E4D5C6;
-      border-radius: 22px;
-      aspect-ratio: 4/5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6B5750;
-      font-weight: 600;
-      font-size: 1.1rem;
-      border: 2px dashed #C98A82;
-      text-align: center;
-      padding: 20px;
-    }
-    .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
+  .site-header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,244,236,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(169,100,92,0.15);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+  }
+  .logo{
+    font-family:var(--display);
+    font-size:1.35rem;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .logo span{ color:var(--rose-deep); font-family:var(--script); font-size:1.55rem; font-weight:500; margin-left:2px; }
+  .nav{
+    display:flex; align-items:center; gap:30px;
+  }
+  .nav a{
+    font-size:0.94rem; font-weight:600; color:var(--ink-soft);
+    position:relative; padding:4px 0;
+    transition:color .2s ease;
+  }
+  .nav a::after{
+    content:""; position:absolute; left:0; bottom:-3px; width:0; height:2px;
+    background:var(--rose); transition:width .25s ease;
+  }
+  .nav a:hover{ color:var(--ink); }
+  .nav a:hover::after{ width:100%; }
+  .header-actions{ display:flex; align-items:center; gap:18px; }
 
-    .bg-cream { background: #F4E9DC; }
-    .bg-rose { background: #C98A82; color: #fff; }
-    .bg-rose .section-title { color: #fff; }
-    .bg-rose .section-sub { color: rgba(255,255,255,0.85); }
-    .bg-rose .btn { background: #fff; color: #C98A82; }
-    .bg-rose .btn:hover { background: #FBF4EC; }
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    width:30px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:5px;
+    z-index:1000;
+  }
+  .burger span{
+    height:2px;
+    background:var(--ink);
+    border-radius:2px;
+    transition:all .25s ease;
+  }
 
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .hero{
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    padding:70px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+  }
+  .hero-eyebrow{ font-family:var(--script); font-size:1.6rem; color:var(--rose-deep); }
+  .hero h1{
+    font-size:clamp(2.5rem, 5vw, 3.6rem);
+    line-height:1.08;
+    margin:6px 0 26px;
+  }
+  .hero-list{
+    display:flex; flex-direction:column; gap:14px; margin-bottom:34px;
+  }
+  .hero-list li{
+    display:flex; align-items:flex-start; gap:12px;
+    font-size:1.03rem; color:var(--ink-soft);
+  }
+  .hero-list li::before{
+    content:"◡"; color:var(--rose); font-size:1.1rem; line-height:1.5; flex:0 0 auto;
+  }
+  .hero-photo{ position:relative; }
+  .breathe-ring{
+    position:absolute; inset:-30px;
+    border-radius:var(--radius);
+    border:1.5px solid var(--sage);
+    opacity:0.5;
+    animation:ring-pulse 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes ring-pulse{
+    0%,100%{ transform:scale(0.96); opacity:0.55; }
+    50%{ transform:scale(1.03); opacity:0.15; }
+  }
 
-    .card {
-      background: #fff;
-      padding: 28px 24px;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid rgba(169, 100, 92, 0.08);
-    }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
-    .card .icon { font-size: 2rem; margin-bottom: 8px; }
-    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 6px; }
-    .card p { color: #6B5750; font-size: 0.95rem; }
+  .about{ padding:90px 0; background:var(--cream); }
+  .about-inner{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;
+  }
+  .about-text p{ color:var(--ink-soft); margin-bottom:16px; }
+  .about-list{ display:flex; flex-direction:column; gap:12px; margin-top:22px; }
+  .about-list li{
+    display:flex; align-items:center; gap:12px;
+    font-weight:600; font-size:0.98rem;
+    background:var(--paper); padding:13px 18px; border-radius:var(--radius-sm);
+    box-shadow:0 8px 20px -14px rgba(62,46,39,0.3);
+  }
 
-    .state-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-    .state-btn {
-      background: #fff;
-      border: none;
-      border-radius: 16px;
-      padding: 20px 16px;
-      text-align: left;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      font-family: 'Open Sans', sans-serif;
-      border: 1px solid rgba(169, 100, 92, 0.06);
-    }
-    .state-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-    .state-btn .icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
-    .state-btn .title { font-weight: 700; font-size: 0.95rem; color: #3E2E27; }
-    .state-btn .desc { font-size: 0.85rem; color: #6B5750; }
+  .start{ padding:90px 0; background:var(--cream-deep); }
+  .start-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:18px;
+  }
+  .state-card{
+    background:var(--paper);
+    border-radius:var(--radius-sm);
+    padding:28px 20px;
+    text-align:left;
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:flex; flex-direction:column; gap:10px;
+    height:100%;
+  }
+  .state-card:hover{ transform:translateY(-6px); }
+  .state-card .ico{ font-size:1.7rem; }
+  .state-card .title{ font-weight:700; font-size:1.02rem; }
+  .state-card .hint{ font-size:0.88rem; color:var(--ink-soft); }
 
-    .free-card {
-      background: rgba(255,255,255,0.15);
-      border-radius: 18px;
-      padding: 32px;
-      max-width: 500px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .free-card p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+  .free{
+    padding:90px 0;
+    background:var(--rose);
+    color:#fff;
+    position:relative;
+  }
+  .free .section-title, .free .section-lead{ color:#fff; }
+  .free .section-lead{ color:rgba(255,255,255,0.88); }
+  .free-inner{ display:flex; flex-direction:column; align-items:flex-start; }
+  .free-card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.35);
+    border-radius:var(--radius);
+    padding:34px;
+    max-width:560px;
+  }
+  .free-card p{ margin-bottom:22px; color:rgba(255,255,255,0.92); }
+  .free .btn{ background:#fff; color:var(--rose-deep); box-shadow:none; }
+  .free .btn:hover{ background:var(--cream); }
 
-    .product-card {
-      background: #fff;
-      border-radius: 22px;
-      padding: 40px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-      border: 1px solid rgba(169, 100, 92, 0.08);
-    }
-    .product-card .price {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #A5645C;
-      margin: 16px 0;
-    }
-    .product-card .price sup { font-size: 1rem; color: #6B5750; }
+  .mini{ padding:90px 0; background:var(--cream); }
+  .mini-inner{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+    background:var(--paper); border-radius:var(--radius); padding:50px; box-shadow:var(--shadow);
+  }
+  .mini-list{ display:flex; flex-direction:column; gap:14px; margin:22px 0 30px; }
+  .mini-list li{ display:flex; gap:12px; color:var(--ink-soft); }
+  .price{
+    font-family:var(--display); font-size:2.3rem; color:var(--rose-deep);
+    margin-bottom:22px;
+  }
+  .price sup{ font-size:1rem; font-weight:600; color:var(--ink-soft); margin-left:8px;}
+  .mini-visual{
+    background:linear-gradient(160deg, var(--peach), var(--cream-deep));
+    border-radius:var(--radius);
+    aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .mini-visual .days{
+    font-family:var(--display); font-size:5.5rem; color:#fff;
+    text-shadow:0 10px 24px rgba(62,46,39,0.25);
+  }
+  .payment-note{ font-size:0.82rem; color:var(--ink-soft); margin-top:10px; }
 
-    /* КАРУСЕЛЬ ОТЗЫВОВ */
-    .carousel {
-      position: relative;
-      max-width: 760px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 18px;
-    }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-    .review-slide {
-      min-width: 100%;
-      padding: 6px;
-    }
-    .review-slide .review-content {
-      background: #fff;
-      border-radius: 18px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      text-align: center;
-      border: 1px solid rgba(169, 100, 92, 0.08);
-    }
-    .review-slide .review-content .text {
-      font-style: italic;
-      color: #3E2E27;
-      font-size: 1.05rem;
-      margin-bottom: 12px;
-    }
-    .review-slide .review-content .name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      color: #A5645C;
-    }
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 20px;
-    }
-    .carousel-btn {
-      background: #fff;
-      border: 1px solid rgba(169, 100, 92, 0.2);
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: background 0.2s;
-      color: #3E2E27;
-    }
-    .carousel-btn:hover { background: #F4E9DC; }
+  .work{ padding:90px 0; background:var(--cream-deep); }
+  .work-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .work-card{
+    background:var(--paper); border-radius:var(--radius-sm); padding:32px 24px;
+    box-shadow:0 8px 20px -14px rgba(62,46,39,0.3);
+    text-align:left;
+  }
+  .work-card .ico{ font-size:2rem; margin-bottom:14px; }
+  .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
+  .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
-    /* Футер */
-    footer {
-      background: linear-gradient(160deg, #3E2E27, #2D1F1A);
-      color: rgba(255,255,255,0.8);
-      padding: 70px 0 40px;
-    }
-    footer .btn { background: #8BA58B; color: #fff; }
-    footer .btn:hover { background: #6E8B6E; }
-    footer .grid-2 { align-items: start; }
-    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
-    footer a:hover { color: #fff; }
+  .reviews{ padding:90px 0; background:var(--cream); }
+  .carousel{ position:relative; max-width:760px; margin:0 auto; }
+  .carousel-track{ overflow:hidden; border-radius:var(--radius); }
+  .carousel-slides{ display:flex; transition:transform .5s ease; }
+  .review-slide{ min-width:100%; padding:6px; }
+  .review-shot{
+    background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
+    border:2px dashed var(--rose);
+    border-radius:var(--radius);
+    aspect-ratio:16/10;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:8px; color:var(--rose-deep); font-weight:600; text-align:center; padding:20px;
+  }
+  .review-name{ font-family:var(--script); font-size:1.3rem; color:var(--ink); margin-top:6px; }
+  .carousel-controls{
+    display:flex; align-items:center; justify-content:center; gap:24px; margin-top:24px;
+  }
+  .carousel-btn{
+    width:44px; height:44px; border-radius:50%; background:var(--paper);
+    box-shadow:0 8px 18px -10px rgba(62,46,39,0.4);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--rose-deep);
+    transition:background .2s ease;
+  }
+  .carousel-btn:hover{ background:var(--peach); }
+  .carousel-dots{ display:flex; gap:8px; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); }
+  .dot.active{ background:var(--rose-deep); }
 
-    .form-group { margin-bottom: 16px; }
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 4px;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 1rem;
-    }
-    .form-group textarea { min-height: 100px; resize: vertical; }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
-    .form-group input:focus,
-    .form-group textarea:focus { outline: 2px solid #8BA58B; }
+  .invite{
+    padding:100px 0 60px;
+    background:var(--ink);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .invite-inner{
+    display:grid; grid-template-columns:1fr 0.85fr; gap:60px; align-items:start;
+  }
+  .invite .eyebrow{ color:var(--peach); }
+  .invite h2{ color:#fff; font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:18px; }
+  .invite p{ color:rgba(251,244,236,0.78); max-width:480px; margin-bottom:10px; }
+  .invite-form{
+    background:rgba(251,244,236,0.06);
+    border:1px solid rgba(251,244,236,0.18);
+    border-radius:var(--radius);
+    padding:34px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .field{ display:flex; flex-direction:column; gap:6px; }
+  .field label{ font-size:0.85rem; color:rgba(251,244,236,0.7); }
+  .field input, .field textarea{
+    background:rgba(251,244,236,0.08);
+    border:1px solid rgba(251,244,236,0.25);
+    border-radius:10px;
+    padding:12px 14px;
+    color:#fff; font-family:inherit; font-size:0.96rem;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color:rgba(251,244,236,0.4); }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--sage); }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .form-note{ font-size:0.78rem; color:rgba(251,244,236,0.5); }
+  .footer-bottom{
+    margin-top:70px; padding-top:26px; border-top:1px solid rgba(251,244,236,0.15);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.85rem; color:rgba(251,244,236,0.55);
+  }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 30px;
-      margin-top: 50px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.5);
-    }
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(62,46,39,0.55);
+    display:flex; align-items:center; justify-content:center;
+    padding:20px; z-index:1000;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .modal-overlay.open{ opacity:1; pointer-events:auto; }
+  .modal{
+    background:var(--paper); border-radius:var(--radius);
+    max-width:460px; width:100%; padding:36px;
+    position:relative;
+    transform:translateY(20px); transition:transform .3s ease;
+    max-height:88vh; overflow-y:auto;
+  }
+  .modal-overlay.open .modal{ transform:translateY(0); }
+  .modal-close{
+    position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%;
+    background:var(--cream-deep); display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem; color:var(--ink-soft);
+  }
+  .modal-close:hover{ background:var(--peach); }
+  .modal h3{ font-size:1.4rem; margin-bottom:12px; padding-right:24px; }
+  .modal p{ color:var(--ink-soft); margin-bottom:18px; font-size:0.95rem; }
+  .modal form{ display:flex; flex-direction:column; gap:14px; }
+  .modal .field input{
+    border:1.5px solid #E4D5C6; border-radius:10px; padding:12px 14px; font-family:inherit; font-size:0.96rem;
+  }
+  .modal .field label{ font-size:0.85rem; color:var(--ink-soft); }
+  .modal .field input:focus{ outline:2px solid var(--rose); border-color:transparent; }
+  .modal .btn{ width:100%; margin-top:6px; }
+  .success-box{ display:none; text-align:center; padding:10px 0; }
+  .success-box.show{ display:block; }
+  .success-box .ico{ font-size:2.4rem; margin-bottom:10px; }
+  .success-box a{ color:var(--rose-deep); font-weight:700; text-decoration:underline; }
 
-    @media (max-width: 820px) {
-      .burger { display: flex; }
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #FBF4EC;
-        padding: 24px;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      }
-      nav.open { display: flex; }
-      nav a { margin: 8px 0; font-size: 1.1rem; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero .photo { order: -1; max-width: 300px; margin: 0 auto; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .grid-4 { grid-template-columns: 1fr 1fr; }
-      .state-grid { grid-template-columns: 1fr 1fr; }
-      section { padding: 50px 0; }
+  @media (max-width:980px){
+    .hero-inner, .about-inner, .mini-inner, .invite-inner{ grid-template-columns:1fr; }
+    .hero-photo{ order:-1; max-width:340px; margin:0 auto; }
+    .start-grid{ grid-template-columns:repeat(2,1fr); }
+    .work-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  @media (max-width:760px){
+    .nav{
+      position:fixed; top:64px; left:0; right:0; bottom:0;
+      background:var(--cream);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:30px 28px;
+      gap:22px;
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      z-index:999;
     }
-    @media (max-width: 550px) {
-      .grid-4 { grid-template-columns: 1fr; }
-      .state-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 2.2rem; }
-      .btn { display: block; text-align: center; width: 100%; }
+    .nav.open{
+      transform:translateX(0);
     }
-  </style>
+    .burger{
+      display:flex;
+      z-index:1000;
+    }
+    .header-actions .btn span{ display:none; }
+    .start-grid, .work-grid{ grid-template-columns:1fr; }
+    .mini-inner{ padding:30px; }
+    .invite-inner{ gap:36px; }
+    .footer-bottom{ flex-direction:column; }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container header-wrap">
-      <a href="#" class="logo">Евгения <span>Яковлева</span></a>
-      <button class="burger" id="burger" aria-label="Меню">
+<header class="site-header">
+  <div class="header-inner wrap">
+    <a href="#hero" class="logo">Евгения<span>Яковлева</span></a>
+    <nav class="nav" id="nav">
+      <a href="#about">Кто я</a>
+      <a href="#free">Бесплатно</a>
+      <a href="#mini">Мини-продукт</a>
+      <a href="#work">Работа со мной</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn" data-open-modal="bookingModal"><span>Записаться</span> ✦</button>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav id="nav">
-        <a href="#about">Кто я</a>
-        <a href="#free">Бесплатно</a>
-        <a href="#mini">Мини-продукт</a>
-        <a href="#work">Работа со мной</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#contact">Контакты</a>
-      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <h1>Привет! Я Женя</h1>
-        <p style="color:#6B5750; font-size:1.1rem; margin-bottom:16px;">Если ты здесь, скорее всего, сейчас в твоей жизни один из таких периодов:</p>
-        <ul class="hero-list">
-          <li>ты устала жить в режиме "надо"</li>
-          <li>потеряла контакт с собой</li>
-          <li>хочешь отношений, но снова выбираешь не тех</li>
-          <li>всё есть, но радости почему-то нет</li>
-          <li>хочется снова почувствовать себя живой</li>
+<section class="hero" id="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy reveal">
+      <span class="hero-eyebrow">Привет!</span>
+      <h1>Я Женя</h1>
+      <p style="color:var(--ink-soft); margin-bottom:18px;">Если ты здесь, скорее всего, сейчас в твоей жизни один из таких периодов:</p>
+      <ul class="hero-list">
+        <li>ты устала жить в режиме "надо"</li>
+        <li>потеряла контакт с собой</li>
+        <li>хочешь отношений, но снова выбираешь не тех</li>
+        <li>всё есть, но радости почему-то нет</li>
+        <li>хочется снова почувствовать себя живой</li>
+      </ul>
+      <p style="color:var(--ink-soft); margin-bottom:26px;">Уже больше 4 лет я сопровождаю женщин на пути возвращения к себе. Ниже я собрала всё, чтобы тебе было легко понять, чем я могу быть полезна.</p>
+      <a href="#free" class="btn btn-breathe">Пройти бесплатную диагностику</a>
+    </div>
+    <div class="hero-photo reveal">
+      <div class="breathe-ring" aria-hidden="true"></div>
+      <div class="photo-placeholder">[ВСТАВИТЬ ФОТО ЕВГЕНИИ]</div>
+    </div>
+  </div>
+</section>
+
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#F4E9DC"></path></svg></div>
+
+<section class="about" id="about">
+  <div class="wrap about-inner">
+    <div class="about-photo reveal">
+      <div class="photo-placeholder">[ВСТАВИТЬ ФОТО — портрет или в работе]</div>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Кто я</span>
+      <h2 class="section-title">Меня зовут Евгения Яковлева</h2>
+      <p>Когда-то у меня был успешный бизнес, который существовал почти 16 лет. Со стороны всё выглядело прекрасно. Но внутри были тревога, постоянный контроль, усталость и ощущение, что я потеряла себя. Закрыв этот этап жизни, я поняла, что моё настоящее предназначение — помогать женщинам возвращаться к себе.</p>
+      <p style="font-weight:600; color:var(--ink);">Сегодня я:</p>
+      <ul class="about-list">
+        <li>🤍 мастер женских практик</li>
+        <li>🤍 аромаэксперт</li>
+        <li>🤍 ведущая женских ретритов, женских кругов</li>
+        <li>🤍 автор программ по внутреннему состоянию женщины</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="start" id="start">
+  <div class="wrap">
+    <span class="eyebrow reveal">Навигация</span>
+    <h2 class="section-title reveal">С чего начать</h2>
+    <p class="section-lead reveal">Ответь себе честно. Что сейчас ближе всего?</p>
+    <div class="start-grid">
+      <button class="state-card reveal" data-state="tired">
+        <span class="ico">🌿</span>
+        <span class="title">Я постоянно устаю</span>
+      </button>
+      <button class="state-card reveal" data-state="lost">
+        <span class="ico">🌿</span>
+        <span class="title">Потеряла себя</span>
+      </button>
+      <button class="state-card reveal" data-state="relationships">
+        <span class="ico">🌿</span>
+        <span class="title">Не могу построить отношения</span>
+      </button>
+      <button class="state-card reveal" data-state="good">
+        <span class="ico">🌿</span>
+        <span class="title">Всё хорошо, но радости нет</span>
+      </button>
+      <button class="state-card reveal" data-state="feminine">
+        <span class="ico">🌿</span>
+        <span class="title">Хочу больше женственности</span>
+      </button>
+    </div>
+    <p class="section-lead reveal" style="margin-top:26px; margin-bottom:0;">Для каждого состояния я создала своё решение.</p>
+  </div>
+</section>
+
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,-10 900,70 1200,30 L1200,0 L0,0 Z" fill="#C98A82"></path></svg></div>
+
+<section class="free" id="free">
+  <div class="wrap free-inner">
+    <span class="eyebrow" style="color:#fff;">Первый шаг</span>
+    <h2 class="section-title">🎁 Бесплатная диагностика "В каком состоянии ты сейчас?"</h2>
+    <div class="free-card">
+      <p>Нажми кнопку — получи PDF-гид с разбором твоего состояния.</p>
+      <button class="btn" data-open-modal="diagModal">Пройти диагностику</button>
+    </div>
+  </div>
+</section>
+
+<section class="mini" id="mini">
+  <div class="wrap">
+    <div class="mini-inner">
+      <div class="mini-text reveal">
+        <span class="eyebrow">Мини-продукт</span>
+        <h2 class="section-title" style="margin-bottom:6px;">7 дней к себе</h2>
+        <p style="color:var(--ink-soft);">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
+        <ul class="mini-list">
+          <li>✔ ежедневные задания</li>
+          <li>✔ аудиопрактики</li>
+          <li>✔ мягкое возвращение к себе</li>
         </ul>
-        <p style="color:#6B5750; margin-bottom:24px;">Уже больше 4 лет я сопровождаю женщин на пути возвращения к себе. Ниже я собрала всё, чтобы тебе было легко понять, чем я могу быть полезна.</p>
-        <a href="#free" class="btn">Пройти бесплатную диагностику</a>
+        <div class="price">490 ₽ <sup>за 7 дней</sup></div>
+        <a href="#" class="btn" data-payment-stub>Хочу пройти тоже</a>
+        <p class="payment-note">Кнопка-заглушка — замените ссылку на оплату через ЮKassa / Tinkoff.</p>
       </div>
-      <div class="photo">[ФОТО ЕВГЕНИИ]</div>
-    </div>
-  </section>
-
-  <section id="about" class="bg-cream">
-    <div class="container grid-2">
-      <div class="photo">[ФОТО ЕВГЕНИИ]</div>
-      <div>
-        <h2 class="section-title">Кто я</h2>
-        <p style="color:#6B5750; margin-bottom:16px;"><strong>Меня зовут Евгения Яковлева.</strong></p>
-        <p style="color:#6B5750; margin-bottom:12px;">Когда-то у меня был успешный бизнес, который существовал почти 16 лет. Со стороны всё выглядело прекрасно. Но внутри были тревога, постоянный контроль, усталость и ощущение, что я потеряла себя.</p>
-        <p style="color:#6B5750; margin-bottom:20px;">Закрыв этот этап жизни, я поняла, что моё настоящее предназначение — помогать женщинам возвращаться к себе.</p>
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <div>🤍 мастер женских практик</div>
-          <div>🤍 аромаэксперт</div>
-          <div>🤍 ведущая женских ретритов, женских кругов</div>
-          <div>🤍 автор программ по внутреннему состоянию женщины</div>
-        </div>
+      <div class="mini-visual reveal" aria-hidden="true">
+        <span class="days">7</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="start">
-    <div class="container">
-      <h2 class="section-title">С чего начать</h2>
-      <p class="section-sub">Ответь себе честно. Что сейчас ближе всего?</p>
-      <div class="state-grid">
-        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
-          <span class="icon">🌿</span>
-          <div class="title">Я постоянно устаю</div>
-        </button>
-        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
-          <span class="icon">🌾</span>
-          <div class="title">Потеряла себя</div>
-        </button>
-        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
-          <span class="icon">🤍</span>
-          <div class="title">Не могу построить отношения</div>
-        </button>
-        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
-          <span class="icon">🌤️</span>
-          <div class="title">Всё хорошо, но радости нет</div>
-        </button>
-        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
-          <span class="icon">🌸</span>
-          <div class="title">Хочу больше женственности</div>
-        </button>
+<section class="work" id="work">
+  <div class="wrap">
+    <span class="eyebrow reveal">Форматы</span>
+    <h2 class="section-title reveal">Работа со мной</h2>
+    <div class="work-grid">
+      <div class="work-card reveal">
+        <div class="ico">🌿</div>
+        <h3>Индивидуальная консультация</h3>
+        <p>если хочется разобраться именно со своей историей</p>
       </div>
-      <p style="color:#6B5750; margin-top:20px; font-size:0.95rem;">Для каждого состояния я создала своё решение.</p>
-    </div>
-  </section>
-
-  <section id="free" class="bg-rose">
-    <div class="container">
-      <h2 class="section-title">🎁 Бесплатная диагностика</h2>
-      <p class="section-sub">"В каком состоянии ты сейчас?"</p>
-      <div class="free-card">
-        <p>Нажми кнопку ниже — получи PDF-гид с разбором твоего состояния.</p>
-        <a href="#" class="btn" onclick="alert('Здесь будет ссылка на PDF-гид (загрузи на Google Диск и вставь ссылку)'); return false;">Пройти диагностику</a>
+      <div class="work-card reveal">
+        <div class="ico">🌿</div>
+        <h3>Сопровождение</h3>
+        <p>если хочется изменений не на один день</p>
+      </div>
+      <div class="work-card reveal">
+        <div class="ico">🌿</div>
+        <h3>Женские ретриты</h3>
+        <p>если хочется глубокого погружения</p>
+      </div>
+      <div class="work-card reveal">
+        <div class="ico">🌿</div>
+        <h3>Аромасопровождение</h3>
+        <p>если хочется восстановить своё состояние через эфирные масла</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="mini" class="bg-cream">
-    <div class="container">
-      <div class="product-card grid-2" style="grid-template-columns:1fr 1fr; gap:40px;">
-        <div>
-          <h2 class="section-title" style="margin-bottom:6px;">7 дней к себе</h2>
-          <p style="color:#6B5750;">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
-          <ul style="list-style:none; margin:20px 0; color:#6B5750;">
-            <li>✔ ежедневные задания</li>
-            <li>✔ аудиопрактики</li>
-            <li>✔ мягкое возвращение к себе</li>
-          </ul>
-          <div class="price">490 ₽</div>
-          <a href="#" class="btn btn-mint" onclick="alert('Замени ссылку на оплату через ЮKassa / Tinkoff'); return false;">Хочу пройти тоже</a>
-        </div>
-        <div style="background:linear-gradient(160deg, #F0C6AC, #F4E9DC); border-radius:22px; aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px; text-align:center; color:#A5645C;">
-          <span style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:600; color:#fff; text-shadow:0 4px 16px rgba(0,0,0,0.08);">7 дней</span>
-          <span style="color:rgba(255,255,255,0.85); font-size:1.1rem; margin-top:8px;">бережного возвращения к себе</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FBF4EC"></path></svg></div>
 
-  <section id="work">
-    <div class="container">
-      <h2 class="section-title">Работа со мной</h2>
-      <div class="grid-4">
-        <div class="card"><div class="icon">🌿</div><h3>Индивидуальная консультация</h3><p>если хочется разобраться именно со своей историей</p></div>
-        <div class="card"><div class="icon">🌱</div><h3>Сопровождение</h3><p>если хочется изменений не на один день</p></div>
-        <div class="card"><div class="icon">⛰️</div><h3>Женские ретриты</h3><p>если хочется глубокого погружения</p></div>
-        <div class="card"><div class="icon">🌸</div><h3>Аромасопровождение</h3><p>если хочется восстановить своё состояние через эфирные масла</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews" class="bg-cream">
-    <div class="container">
-      <h2 class="section-title">Отзывы</h2>
-      <div class="carousel">
-        <div class="carousel-track" id="reviewsTrack">
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <span class="eyebrow reveal">Истории</span>
+    <h2 class="section-title reveal">Отзывы</h2>
+    <p class="section-lead reveal">То, что пишут мне после консультаций, ретритов и «7 дней к себе».</p>
+    <div class="carousel reveal">
+      <div class="carousel-track">
+        <div class="carousel-slides" id="carouselSlides">
           <div class="review-slide">
-            <div class="review-content">
-              <div class="text">«Это был первый раз, когда я честно ответила себе на вопрос "чего я хочу". Женя помогла мне услышать себя»</div>
-              <div class="name">— Марина, 34 года</div>
-            </div>
+            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-name">— Марина, 34 года</div>
           </div>
           <div class="review-slide">
-            <div class="review-content">
-              <div class="text">«После ретрита я почувствовала, что могу дышать. Спасибо за бережность и глубину»</div>
-              <div class="name">— Алина, 29 лет</div>
-            </div>
+            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-name">— Алина, 29 лет</div>
           </div>
           <div class="review-slide">
-            <div class="review-content">
-              <div class="text">«7 дней к себе изменили моё утро. Я перестала просыпаться с тревогой. Это бесценно»</div>
-              <div class="name">— Ольга, 41 год</div>
-            </div>
+            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-name">— Ольга, 41 год</div>
           </div>
         </div>
       </div>
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prevSlide">←</button>
-        <button class="carousel-btn" id="nextSlide">→</button>
+        <button class="carousel-btn" id="prevSlide" aria-label="Предыдущий отзыв">←</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="nextSlide" aria-label="Следующий отзыв">→</button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer id="contact">
-    <div class="container">
-      <div class="grid-2">
-        <div>
-          <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:#fff; margin-bottom:16px;">Приглашение</h2>
-          <p style="color:rgba(255,255,255,0.8); margin-bottom:16px; font-size:1.05rem;">Возможно, сейчас именно то время, когда пора перестать искать ответы только снаружи.</p>
-          <p style="color:rgba(255,255,255,0.7); font-size:1.05rem;">Иногда достаточно сделать один маленький шаг навстречу себе. Я рядом 🤍</p>
-        </div>
-        <div>
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name">Имя</label>
-              <input type="text" id="name" placeholder="Ваше имя" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Телефон</label>
-              <input type="tel" id="phone" placeholder="+7 ___ ___-__-__" required />
-            </div>
-            <div class="form-group">
-              <label for="msg">Сообщение</label>
-              <textarea id="msg" placeholder="Расскажите, что вас волнует"></textarea>
-            </div>
-            <button type="submit" class="btn" style="width:100%; text-align:center;">Записаться</button>
-          </form>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Евгения Яковлева</span>
-        <span>Сайт создан с заботой о тебе</span>
-      </div>
+<footer class="invite" id="contact">
+  <div class="wrap invite-inner">
+    <div class="invite-copy reveal">
+      <span class="eyebrow">Приглашение</span>
+      <h2>Возможно, сейчас именно то время, когда пора перестать искать ответы только снаружи</h2>
+      <p>Иногда достаточно сделать один маленький шаг навстречу себе.</p>
+      <p>Я рядом 🤍</p>
     </div>
-  </footer>
+    <form class="invite-form reveal" id="inviteForm">
+      <div class="field">
+        <label for="inviteName">Имя</label>
+        <input id="inviteName" name="name" type="text" placeholder="Как к тебе обращаться" required>
+      </div>
+      <div class="field">
+        <label for="invitePhone">Телефон</label>
+        <input id="invitePhone" name="phone" type="tel" placeholder="+7 ___ ___-__-__" required>
+      </div>
+      <div class="field">
+        <label for="inviteMessage">Сообщение</label>
+        <textarea id="inviteMessage" name="message" placeholder="Расскажи немного о своей ситуации (необязательно)"></textarea>
+      </div>
+      <button type="submit" class="btn">Записаться</button>
+      <p class="form-note">Форма — заглушка. Подключите Formspree или другой сервис, чтобы заявки приходили на почту.</p>
+    </form>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Евгения Яковлева</span>
+    <span>Сайт создан с заботой о тебе</span>
+  </div>
+</footer>
 
-  <script>
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('nav');
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" data-close-modal>✕</button>
+    <div class="modal-body">
+      <h3>Записаться на консультацию</h3>
+      <p>Оставь контакты — я свяжусь с тобой, чтобы подобрать удобное время.</p>
+      <form data-fake-submit>
+        <div class="field">
+          <label for="bkName">Имя</label>
+          <input id="bkName" type="text" required placeholder="Твоё имя">
+        </div>
+        <div class="field">
+          <label for="bkContact">Телефон или Email</label>
+          <input id="bkContact" type="text" required placeholder="Телефон или email">
+        </div>
+        <button type="submit" class="btn">Отправить заявку</button>
+      </form>
+    </div>
+    <div class="success-box">
+      <div class="ico">🌸</div>
+      <h3>Заявка отправлена</h3>
+      <p>Спасибо! Я свяжусь с тобой в течение суток.</p>
+    </div>
+  </div>
+</div>
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+<div class="modal-overlay" id="diagModal">
+  <div class="modal">
+    <button class="modal-close" data-close-modal>✕</button>
+    <div class="modal-body">
+      <h3>Бесплатная диагностика</h3>
+      <p>Укажи имя и контакт — и получи ссылку на PDF-гид с разбором твоего состояния.</p>
+      <form data-fake-submit data-diagnostic>
+        <div class="field">
+          <label for="diagName">Имя</label>
+          <input id="diagName" type="text" required placeholder="Твоё имя">
+        </div>
+        <div class="field">
+          <label for="diagContact">Email или телефон</label>
+          <input id="diagContact" type="text" required placeholder="Email или телефон">
+        </div>
+        <button type="submit" class="btn">Получить гид</button>
+      </form>
+    </div>
+    <div class="success-box">
+      <div class="ico">📄</div>
+      <h3>Готово!</h3>
+      <p>Твой гид уже ждёт тебя.<br><a href="#" data-fake-pdf>Открыть PDF-гид →</a></p>
+      <p style="font-size:0.78rem;">Ссылка — заглушка. Загрузите PDF на Google Диск и вставьте сюда прямую ссылку.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="stateModal">
+  <div class="modal">
+    <button class="modal-close" data-close-modal>✕</button>
+    <div class="modal-body">
+      <h3 id="stateTitle"></h3>
+      <p id="stateText"></p>
+      <button class="btn" data-open-modal="bookingModal" data-close-first>Записаться на консультацию</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    var isOpen = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  nav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ nav.classList.remove('open'); });
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  var lastFocused = null;
+  function openModal(id){
+    var modal = document.getElementById(id);
+    if(!modal) return;
+    lastFocused = document.activeElement;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var focusable = modal.querySelector('input, button');
+    if(focusable) focusable.focus();
+  }
+  function closeModal(modal){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    var form = modal.querySelector('form');
+    var success = modal.querySelector('.success-box');
+    if(form) form.style.display = '';
+    if(success) success.classList.remove('show');
+    if(form) form.reset();
+    if(lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
       e.preventDefault();
-      alert('Заявка отправлена! (Подключи Formspree, чтобы получать на почту)');
-      this.reset();
+      if(btn.hasAttribute('data-close-first')){
+        var openOverlay = document.querySelector('.modal-overlay.open');
+        if(openOverlay) closeModal(openOverlay);
+      }
+      openModal(btn.getAttribute('data-open-modal'));
     });
+  });
 
-    const track = document.getElementById('reviewsTrack');
-    let current = 0;
-    const slides = track.querySelectorAll('.review-slide');
-    document.getElementById('nextSlide').addEventListener('click', () => {
-      current = (current + 1) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      closeModal(btn.closest('.modal-overlay'));
     });
-    document.getElementById('prevSlide').addEventListener('click', () => {
-      current = (current - 1 + slides.length) % slides.length;
-      track.style.transform = `translateX(-${current * 100}%)`;
-    });
-  </script>
+  });
 
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closeModal(overlay);
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var openOverlay = document.querySelector('.modal-overlay.open');
+      if(openOverlay) closeModal(openOverlay);
+    }
+  });
+
+  document.querySelectorAll('[data-fake-submit]').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var modalBody = form.closest('.modal').querySelector('.modal-body');
+      var success = form.closest('.modal').querySelector('.success-box');
+      modalBody.style.display = 'none';
+      success.classList.add('show');
+    });
+  });
+
+  document.querySelectorAll('[data-fake-pdf]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      alert('Здесь будет ссылка на PDF-гид (например, с Google Диска).');
+    });
+  });
+
+  document.querySelectorAll('[data-payment-stub]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      alert('Заглушка оплаты. Подключите здесь ссылку ЮKassa / Tinkoff / другого платёжного сервиса.');
+    });
+  });
+
+  var stateContent = {
+    tired: {
+      title: 'Я постоянно устаю',
+      text: 'Начни с восстановления базового ресурса: короткая консультация поможет понять, откуда уходит энергия, и с какого простого шага начать возвращать силы — без резких перемен и «через не могу».'
+    },
+    lost: {
+      title: 'Потеряла себя',
+      text: 'Хорошая точка входа — мини-продукт «7 дней к себе»: мягкий формат, который помогает шаг за шагом снова услышать себя, не требуя больших решений прямо сейчас.'
+    },
+    relationships: {
+      title: 'Не могу построить отношения',
+      text: 'Разовая консультация поможет разобраться, что именно происходит в отношениях и на что в первую очередь стоит обратить внимание — твоё или партнёра.'
+    },
+    good: {
+      title: 'Всё хорошо, но радости нет',
+      text: 'Если хочется больше лёгкости и радости — присмотрись к женским ретритам или аромасопровождению: это про то, чтобы усилить хорошее, а не чинить сломанное.'
+    },
+    feminine: {
+      title: 'Хочу больше женственности',
+      text: 'Сопровождение — формат, который бережно раскрывает мягкость, чувственность и контакт с собой через тело, практики и ароматы.'
+    }
+  };
+
+  document.querySelectorAll('.state-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var data = stateContent[card.getAttribute('data-state')];
+      if(!data) return;
+      document.getElementById('stateTitle').textContent = data.title;
+      document.getElementById('stateText').textContent = data.text;
+      openModal('stateModal');
+    });
+  });
+
+  var inviteForm = document.getElementById('inviteForm');
+  inviteForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('Заявка отправлена (заглушка). Подключите Formspree или свой email-сервис, чтобы получать заявки на почту.');
+    inviteForm.reset();
+  });
+
+  var track = document.getElementById('carouselSlides');
+  var slides = track.querySelectorAll('.review-slide');
+  var dotsWrap = document.getElementById('carouselDots');
+  var current = 0;
+
+  slides.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Перейти к отзыву ' + (i+1));
+    dot.addEventListener('click', function(){ goTo(i); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function goTo(i){
+    current = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dotsWrap.querySelectorAll('.dot').forEach(function(d, idx){
+      d.classList.toggle('active', idx === current);
+    });
+  }
+
+  document.getElementById('prevSlide').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextSlide').addEventListener('click', function(){ goTo(current + 1); });
+
+})();
+</script>
 </body>
 </html>
