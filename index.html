@@ -8,7 +8,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
+/* ===== БУРГЕР-ФИКС ===== */
+.burger {
+  display: none !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 5px !important;
+  z-index: 9999 !important;
+}
+.burger span {
+  width: 28px !important;
+  height: 2px !important;
+  background: #3E2E27 !important;
+  border-radius: 2px !important;
+  display: block !important;
+}
 
+@media (max-width: 820px) {
+  .burger {
+    display: flex !important;
+  }
+  nav {
+    display: none !important;
+    flex-direction: column !important;
+    background: #FBF4EC !important;
+    padding: 30px 24px !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+    z-index: 9998 !important;
+    overflow-y: auto !important;
+  }
+  nav.open {
+    display: flex !important;
+  }
+  nav a {
+    margin: 8px 0 !important;
+    font-size: 1.1rem !important;
+  }
+}
   :root{
     --cream:      #FBF4EC;
     --cream-deep: #F4E9DC;
