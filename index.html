@@ -3,283 +3,515 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Детский клуб «Солнышко»</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>Евгения Яковлева — женский коуч</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #FBF4EC;
+      color: #3E2E27;
+      line-height: 1.7;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Шапка */
+    header {
+      background: rgba(251, 244, 236, 0.95);
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(169, 100, 92, 0.15);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-wrap {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #3E2E27;
+    }
+    .logo span { color: #A5645C; }
+    nav a {
+      color: #6B5750;
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: #A5645C; }
+
+    /* Бургер (мобильное меню) */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .burger span {
+      width: 28px;
+      height: 2px;
+      background: #3E2E27;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Секции */
+    section { padding: 70px 0; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #3E2E27;
+    }
+    .section-sub {
+      color: #6B5750;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      background: #C98A82;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+    .btn:hover { background: #A5645C; }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #C98A82;
+      color: #C98A82;
+    }
+    .btn-outline:hover { background: #C98A82; color: #fff; }
+
+    /* Герой */
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(180deg, #FBF4EC, #F4E9DC);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .hero-list li {
+      padding: 6px 0;
+      color: #6B5750;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .hero-list li::before {
+      content: "◡";
+      color: #C98A82;
+      font-weight: 700;
+    }
+    .hero .photo {
+      background: #E4D5C6;
+      border-radius: 22px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6B5750;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: 2px dashed #C98A82;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Блоки */
+    .bg-cream { background: #F4E9DC; }
+    .bg-rose { background: #C98A82; color: #fff; }
+    .bg-rose .section-title { color: #fff; }
+    .bg-rose .section-sub { color: rgba(255,255,255,0.85); }
+    .bg-rose .btn { background: #fff; color: #C98A82; }
+    .bg-rose .btn:hover { background: #FBF4EC; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+    .card {
+      background: #fff;
+      padding: 28px 24px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card .icon { font-size: 2rem; margin-bottom: 8px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 6px; }
+    .card p { color: #6B5750; font-size: 0.95rem; }
+
+    .state-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .state-btn {
+      background: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: left;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .state-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .state-btn .icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+    .state-btn .title { font-weight: 700; font-size: 0.95rem; color: #3E2E27; }
+    .state-btn .desc { font-size: 0.85rem; color: #6B5750; }
+
+    .free-card {
+      background: rgba(255,255,255,0.15);
+      border-radius: 18px;
+      padding: 32px;
+      max-width: 500px;
+    }
+    .free-card p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
+
+    .product-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 40px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    }
+    .product-card .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #A5645C;
+      margin: 16px 0;
+    }
+    .product-card .price sup { font-size: 1rem; color: #6B5750; }
+
+    .review-placeholder {
+      background: repeating-linear-gradient(45deg, #F4E9DC, #F4E9DC 14px, #ecdfd0 14px, #ecdfd0 28px);
+      border-radius: 18px;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6B5750;
+      font-weight: 600;
+      border: 2px dashed #C98A82;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Футер */
+    footer {
+      background: #3E2E27;
+      color: rgba(255,255,255,0.7);
+      padding: 70px 0 40px;
+    }
+    footer .btn { background: #fff; color: #3E2E27; }
+    footer .btn:hover { background: #F4E9DC; }
+    footer .grid-2 { align-items: start; }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 4px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+    .form-group input:focus,
+    .form-group textarea:focus { outline: 2px solid #C98A82; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    /* Мобильная адаптация */
+    @media (max-width: 820px) {
+      .burger { display: flex; }
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #FBF4EC;
+        padding: 24px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      nav.open { display: flex; }
+      nav a { margin: 8px 0; font-size: 1.1rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero .photo { order: -1; max-width: 300px; margin: 0 auto; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+      .state-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 50px 0; }
+    }
+    @media (max-width: 550px) {
+      .grid-4 { grid-template-columns: 1fr; }
+      .state-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+      .btn { display: block; text-align: center; width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== ШАПКА ===== -->
-<header>
-  <div class="container nav-wrap">
-    <a href="#top" class="logo" aria-label="Детский клуб Солнышко, на главную">☀️ Солнышко<span class="dot">.</span></a>
-    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
-      <a href="#about" class="nav-link">О нас</a>
-      <a href="#directions" class="nav-link">Направления</a>
-      <a href="#schedule" class="nav-link">Расписание</a>
-      <a href="#reviews" class="nav-link">Отзывы</a>
-      <a href="#contacts" class="nav-link">Контакты</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ===== ГЕРОЙ ===== -->
-<section class="hero" id="top">
-  <div class="cloud c1" data-depth="18" aria-hidden="true">
-    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/><ellipse cx="80" cy="38" rx="18" ry="14"/></svg>
-  </div>
-  <div class="cloud c2" data-depth="10" aria-hidden="true">
-    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/></svg>
-  </div>
-  <div class="cloud c3" data-depth="24" aria-hidden="true">
-    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/><ellipse cx="80" cy="38" rx="18" ry="14"/></svg>
-  </div>
-  <div class="cloud c4" data-depth="14" aria-hidden="true">
-    <svg viewBox="0 0 100 60" fill="white"><ellipse cx="30" cy="35" rx="28" ry="18"/><ellipse cx="60" cy="28" rx="24" ry="22"/></svg>
-  </div>
-
-  <div class="container content" id="about">
-    <span class="eyebrow">🎈 Приём детей от 3 до 12 лет</span>
-
-    <div class="mascot-wrap" id="mascot" title="Привет! Я Лучик 👋" role="img" aria-label="Персонаж клуба — солнечный лучик с улыбкой">
-      <svg viewBox="0 0 220 220">
-        <g class="ray" fill="#FFC947">
-          <rect x="105" y="4" width="10" height="26" rx="5"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(30 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(60 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(90 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(120 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(150 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(180 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(210 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(240 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(270 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(300 110 110)"/>
-          <rect x="105" y="4" width="10" height="26" rx="5" transform="rotate(330 110 110)"/>
-        </g>
-        <circle cx="110" cy="110" r="62" fill="#FFC947"/>
-        <circle cx="110" cy="110" r="62" fill="none" stroke="#FFA700" stroke-width="4"/>
-        <g class="eye"><ellipse cx="88" cy="104" rx="6" ry="8" fill="#3D2C56"/></g>
-        <g class="eye"><ellipse cx="132" cy="104" rx="6" ry="8" fill="#3D2C56"/></g>
-        <circle cx="80" cy="120" r="8" fill="#FF6F59" opacity="0.55"/>
-        <circle cx="140" cy="120" r="8" fill="#FF6F59" opacity="0.55"/>
-        <path d="M90 130 Q110 150 130 130" stroke="#3D2C56" stroke-width="5" fill="none" stroke-linecap="round"/>
-      </svg>
+  <!-- ШАПКА -->
+  <header>
+    <div class="container header-wrap">
+      <a href="#" class="logo">Евгения <span>Яковлева</span></a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav">
+        <a href="#about">Кто я</a>
+        <a href="#free">Бесплатно</a>
+        <a href="#mini">Мини-продукт</a>
+        <a href="#work">Работа со мной</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
     </div>
+  </header>
 
-    <h1>Детский клуб <span class="accent">«Солнышко»</span></h1>
-    <p class="desc">Танцы, рисование, английский, шахматы, лепка и подготовка к школе — в маленьких группах, с педагогами, которые любят своё дело. Наведите курсор на Лучика, он подмигнёт 😉</p>
-
-    <div class="hero-actions">
-      <button class="btn" onclick="openModal()">🎯 Записаться на пробное</button>
-      <a href="#directions" class="btn outline">Выбрать направление</a>
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>Привет! Я Женя</h1>
+        <p style="color:#6B5750; font-size:1.1rem; margin-bottom:16px;">Если ты здесь, скорее всего, сейчас в твоей жизни один из таких периодов:</p>
+        <ul class="hero-list">
+          <li>ты устала жить в режиме "надо"</li>
+          <li>потеряла контакт с собой</li>
+          <li>хочешь отношений, но снова выбираешь не тех</li>
+          <li>всё есть, но радости почему-то нет</li>
+          <li>хочется снова почувствовать себя живой</li>
+        </ul>
+        <p style="color:#6B5750; margin-bottom:24px;">Уже больше 4 лет я сопровождаю женщин на пути возвращения к себе. Ниже я собрала всё, чтобы тебе было легко понять, чем я могу быть полезна.</p>
+        <a href="#free" class="btn">Пройти бесплатную диагностику</a>
+      </div>
+      <div class="photo">[ФОТО ЕВГЕНИИ]</div>
     </div>
+  </section>
 
-    <div class="badges">
-      <span class="badge">✅ Пробное занятие — бесплатно</span>
-      <span class="badge">👶 Группы до 8 детей</span>
-      <span class="badge">⭐ Опытные педагоги</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== НАПРАВЛЕНИЯ ===== -->
-<section id="directions" class="section">
-  <div class="container">
-    <p class="eyebrow-sm">Чем заняться</p>
-    <h2 class="section-title reveal">Направления для детей 3–12 лет</h2>
-    <p class="section-sub reveal">Нажмите на возраст, чтобы увидеть подходящие занятия</p>
-
-    <div class="filters reveal">
-      <button class="filter-btn active" data-age="all" aria-pressed="true">Все возрасты</button>
-      <button class="filter-btn" data-age="3" aria-pressed="false">3–5 лет</button>
-      <button class="filter-btn" data-age="6" aria-pressed="false">6–9 лет</button>
-      <button class="filter-btn" data-age="10" aria-pressed="false">10–12 лет</button>
-    </div>
-
-    <div class="cards reveal" id="cardsGrid">
-      <div class="card" data-min="4" data-max="10">
-        <div class="icon-circle" aria-hidden="true">💃</div>
-        <h3>Танцы</h3>
-        <div class="meta">4–10 лет · от 600 ₽</div>
-        <button class="btn-mini" onclick="openModal('Танцы')">Записаться</button>
-      </div>
-      <div class="card" data-min="3" data-max="9">
-        <div class="icon-circle" aria-hidden="true">🎨</div>
-        <h3>Рисование</h3>
-        <div class="meta">3–9 лет · от 550 ₽</div>
-        <button class="btn-mini" onclick="openModal('Рисование')">Записаться</button>
-      </div>
-      <div class="card" data-min="5" data-max="12">
-        <div class="icon-circle" aria-hidden="true">🇬🇧</div>
-        <h3>Английский язык</h3>
-        <div class="meta">5–12 лет · от 700 ₽</div>
-        <button class="btn-mini" onclick="openModal('Английский язык')">Записаться</button>
-      </div>
-      <div class="card" data-min="6" data-max="12">
-        <div class="icon-circle" aria-hidden="true">♟️</div>
-        <h3>Шахматы</h3>
-        <div class="meta">6–12 лет · от 600 ₽</div>
-        <button class="btn-mini" onclick="openModal('Шахматы')">Записаться</button>
-      </div>
-      <div class="card" data-min="3" data-max="8">
-        <div class="icon-circle" aria-hidden="true">🧸</div>
-        <h3>Лепка</h3>
-        <div class="meta">3–8 лет · от 550 ₽</div>
-        <button class="btn-mini" onclick="openModal('Лепка')">Записаться</button>
-      </div>
-      <div class="card" data-min="5" data-max="7">
-        <div class="icon-circle" aria-hidden="true">🎓</div>
-        <h3>Подготовка к школе</h3>
-        <div class="meta">5–7 лет · от 750 ₽</div>
-        <button class="btn-mini" onclick="openModal('Подготовка к школе')">Записаться</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== РАСПИСАНИЕ ===== -->
-<section id="schedule" class="section alt">
-  <div class="container">
-    <p class="eyebrow-sm">Когда приходить</p>
-    <h2 class="section-title reveal">Расписание занятий</h2>
-    <p class="section-sub reveal">Выберите день недели, чтобы посмотреть занятия</p>
-
-    <div class="day-tabs reveal" id="dayTabs" role="tablist">
-      <button class="day-tab active" data-day="0" role="tab" aria-selected="true">Пн</button>
-      <button class="day-tab" data-day="1" role="tab" aria-selected="false">Вт</button>
-      <button class="day-tab" data-day="2" role="tab" aria-selected="false">Ср</button>
-      <button class="day-tab" data-day="3" role="tab" aria-selected="false">Чт</button>
-      <button class="day-tab" data-day="4" role="tab" aria-selected="false">Пт</button>
-      <button class="day-tab" data-day="5" role="tab" aria-selected="false">Сб</button>
-    </div>
-
-    <div class="schedule-panel reveal" id="schedulePanel" role="tabpanel"></div>
-  </div>
-</section>
-
-<!-- ===== ОТЗЫВЫ ===== -->
-<section id="reviews" class="section">
-  <div class="container">
-    <p class="eyebrow-sm">Нам доверяют</p>
-    <h2 class="section-title reveal">Отзывы родителей</h2>
-    <p class="section-sub reveal">То, что говорят о нас родители наших воспитанников</p>
-
-    <div class="review-carousel reveal" aria-label="Карусель отзывов">
-      <div class="review-track">
-        <div class="review-slides" id="reviewSlides" aria-live="polite">
-          <div class="review">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <div class="text">«Дочка ходит на танцы уже полгода — бежит с горящими глазами. Педагоги находят подход к каждому ребёнку!»</div>
-            <div class="name">Елена Кузнецова</div>
-          </div>
-          <div class="review">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <div class="text">«Сын занимается шахматами. Стал усидчивее, с удовольствием решает логические задачки дома.»</div>
-            <div class="name">Дмитрий Соколов</div>
-          </div>
-          <div class="review">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <div class="text">«Уютная атмосфера, чисто и безопасно. Английский даётся легко благодаря игровому формату.»</div>
-            <div class="name">Мария Петрова</div>
-          </div>
+  <!-- КТО Я -->
+  <section id="about" class="bg-cream">
+    <div class="container grid-2">
+      <div class="photo" style="aspect-ratio:4/5;">[ФОТО ЕВГЕНИИ]</div>
+      <div>
+        <h2 class="section-title">Кто я</h2>
+        <p style="color:#6B5750; margin-bottom:16px;"><strong>Меня зовут Евгения Яковлева.</strong></p>
+        <p style="color:#6B5750; margin-bottom:12px;">Когда-то у меня был успешный бизнес, который существовал почти 16 лет. Со стороны всё выглядело прекрасно. Но внутри были тревога, постоянный контроль, усталость и ощущение, что я потеряла себя.</p>
+        <p style="color:#6B5750; margin-bottom:20px;">Закрыв этот этап жизни, я поняла, что моё настоящее предназначение — помогать женщинам возвращаться к себе.</p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div>🤍 мастер женских практик</div>
+          <div>🤍 аромаэксперт</div>
+          <div>🤍 ведущая женских ретритов, женских кругов</div>
+          <div>🤍 автор программ по внутреннему состоянию женщины</div>
         </div>
       </div>
-      <div class="review-controls">
-        <button class="review-arrow" id="reviewPrev" aria-label="Предыдущий отзыв">‹</button>
-        <div class="review-dots" id="reviewDots" role="tablist"></div>
-        <button class="review-arrow" id="reviewNext" aria-label="Следующий отзыв">›</button>
+    </div>
+  </section>
+
+  <!-- С ЧЕГО НАЧАТЬ -->
+  <section id="start">
+    <div class="container">
+      <h2 class="section-title">С чего начать</h2>
+      <p class="section-sub">Ответь себе честно. Что сейчас ближе всего?</p>
+      <div class="state-grid">
+        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
+          <span class="icon">🌿</span>
+          <div class="title">Я постоянно устаю</div>
+        </button>
+        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
+          <span class="icon">🌾</span>
+          <div class="title">Потеряла себя</div>
+        </button>
+        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
+          <span class="icon">🤍</span>
+          <div class="title">Не могу построить отношения</div>
+        </button>
+        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
+          <span class="icon">🌤️</span>
+          <div class="title">Всё хорошо, но радости нет</div>
+        </button>
+        <button class="state-btn" onclick="alert('Для этого состояния у меня есть решение. Напиши мне — я расскажу.')">
+          <span class="icon">🌸</span>
+          <div class="title">Хочу больше женственности</div>
+        </button>
+      </div>
+      <p style="color:#6B5750; margin-top:20px; font-size:0.95rem;">Для каждого состояния я создала своё решение.</p>
+    </div>
+  </section>
+
+  <!-- БЕСПЛАТНО -->
+  <section id="free" class="bg-rose">
+    <div class="container">
+      <h2 class="section-title">🎁 Бесплатная диагностика</h2>
+      <p class="section-sub">"В каком состоянии ты сейчас?"</p>
+      <div class="free-card">
+        <p>Нажми кнопку ниже — получи PDF-гид с разбором твоего состояния.</p>
+        <a href="#" class="btn" onclick="alert('Здесь будет ссылка на PDF-гид (загрузи на Google Диск и вставь ссылку)'); return false;">Пройти диагностику</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== КОНТАКТЫ ===== -->
-<section id="contacts" class="section alt">
-  <div class="container">
-    <p class="eyebrow-sm">Ждём вас</p>
-    <h2 class="section-title reveal">Контакты</h2>
-    <p class="section-sub reveal">Приходите на бесплатное пробное занятие!</p>
-
-    <div class="contacts reveal">
-      <div class="contact-info">
-        <div class="row">
-          <i role="img" aria-label="Телефон">📞</i>
-          <div><strong>Телефон</strong><br><a href="tel:+79999999999">+7 (999) 999-99-99</a></div>
+  <!-- МИНИ-ПРОДУКТ -->
+  <section id="mini" class="bg-cream">
+    <div class="container">
+      <div class="product-card grid-2" style="grid-template-columns:1fr 1fr; gap:40px;">
+        <div>
+          <h2 class="section-title" style="margin-bottom:6px;">7 дней к себе</h2>
+          <p style="color:#6B5750;">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
+          <ul style="list-style:none; margin:20px 0; color:#6B5750;">
+            <li>✔ ежедневные задания</li>
+            <li>✔ аудиопрактики</li>
+            <li>✔ мягкое возвращение к себе</li>
+          </ul>
+          <div class="price">490 ₽</div>
+          <a href="#" class="btn" onclick="alert('Замени ссылку на оплату через ЮKassa / Tinkoff'); return false;">Хочу пройти тоже</a>
         </div>
-        <div class="row">
-          <i role="img" aria-label="Email">✉️</i>
-          <div><strong>Email</strong><br><a href="mailto:solnyshko-club@gmail.com">solnyshko-club@gmail.com</a></div>
+        <div style="background:linear-gradient(160deg, #F0C6AC, #F4E9DC); border-radius:22px; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'Playfair Display',serif; font-size:6rem; color:#fff; text-shadow:0 8px 24px rgba(0,0,0,0.15);">7</span>
         </div>
-        <div class="row">
-          <i role="img" aria-label="Адрес">📍</i>
-          <div><strong>Адрес</strong><br>г. Москва, ул.Тверская,д.15 </div>
-        </div>
-        <div class="row">
-          <i role="img" aria-label="Режим работы">🕐</i>
-          <div><strong>Режим работы</strong><br>Пн–Сб: 9:00 – 20:00</div>
-        </div>
-        <button class="btn" style="width:100%; justify-content:center;" onclick="openModal()">🎁 Записаться на пробное</button>
-      </div>
-      <div class="map">
-        <iframe src="https://yandex.ru/map-widget/v1/?text=Москва,%20Тверская%20ул.,%2015&z=17" loading="lazy" title="Карта"></iframe>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== ФУТЕР ===== -->
-<footer>
-  <div class="container">
-    <div class="logo">☀️ Солнышко</div>
-    <div class="foot-links">
-      <a href="#about">О нас</a>
-      <a href="#directions">Направления</a>
-      <a href="#schedule">Расписание</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#contacts">Контакты</a>
+  <!-- РАБОТА СО МНОЙ -->
+  <section id="work">
+    <div class="container">
+      <h2 class="section-title">Работа со мной</h2>
+      <div class="grid-4">
+        <div class="card"><div class="icon">🌿</div><h3>Индивидуальная консультация</h3><p>если хочется разобраться именно со своей историей</p></div>
+        <div class="card"><div class="icon">🌱</div><h3>Сопровождение</h3><p>если хочется изменений не на один день</p></div>
+        <div class="card"><div class="icon">⛰️</div><h3>Женские ретриты</h3><p>если хочется глубокого погружения</p></div>
+        <div class="card"><div class="icon">🌸</div><h3>Аромасопровождение</h3><p>если хочется восстановить своё состояние через эфирные масла</p></div>
+      </div>
     </div>
-    <p class="fine">© 2026 Детский клуб «Солнышко». Все права защищены.</p>
-  </div>
-</footer>
+  </section>
 
-<!-- ===== МОДАЛЬНОЕ ОКНО ЗАПИСИ ===== -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-
-    <div id="formView">
-      <h3>Запись на пробное занятие</h3>
-      <p class="sub" id="modalSub">Заполните форму — мы перезвоним в течение часа</p>
-      <form id="signupForm" onsubmit="return submitForm(event)">
-        <input type="text" id="parentName" placeholder="Имя родителя" required>
-        <input type="tel" id="parentPhone" placeholder="Телефон" required>
-        <select id="directionSelect">
-          <option value="">Выберите направление (по желанию)</option>
-          <option>Танцы</option>
-          <option>Рисование</option>
-          <option>Английский язык</option>
-          <option>Шахматы</option>
-          <option>Лепка</option>
-          <option>Подготовка к школе</option>
-        </select>
-        <button type="submit" class="btn">Отправить заявку</button>
-      </form>
+  <!-- ОТЗЫВЫ -->
+  <section id="reviews" class="bg-cream">
+    <div class="container">
+      <h2 class="section-title">Отзывы</h2>
+      <div class="grid-3">
+        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
+        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
+        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
+      </div>
     </div>
+  </section>
 
-    <div class="success-msg" id="successView">
-      <div class="big-icon">🎉</div>
-      <h3>Заявка отправлена!</h3>
-      <p class="sub">Мы свяжемся с вами в ближайшее время. До встречи в «Солнышке»!</p>
-      <button class="btn" onclick="closeModal()">Отлично</button>
+  <!-- ПРИГЛАШЕНИЕ / КОНТАКТЫ -->
+  <footer id="contact">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:#fff; margin-bottom:16px;">Приглашение</h2>
+          <p style="color:rgba(255,255,255,0.8); margin-bottom:16px;">Возможно, сейчас именно то время, когда пора перестать искать ответы только снаружи.</p>
+          <p style="color:rgba(255,255,255,0.7);">Иногда достаточно сделать один маленький шаг навстречу себе. Я рядом 🤍</p>
+        </div>
+        <div>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Имя</label>
+              <input type="text" id="name" placeholder="Ваше имя" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" placeholder="+7 ___ ___-__-__" required />
+            </div>
+            <div class="form-group">
+              <label for="msg">Сообщение</label>
+              <textarea id="msg" placeholder="Расскажите, что вас волнует"></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%; text-align:center;">Записаться</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Евгения Яковлева</span>
+        <span>Сайт создан с заботой о тебе</span>
+      </div>
     </div>
-  </div>
-</div>
+  </footer>
 
-<script src="script.js"></script>
+  <script>
+    // БУРГЕР-МЕНЮ
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+    burger.addEventListener('click', function() {
+      nav.classList.toggle('open');
+    });
+    nav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        nav.classList.remove('open');
+      });
+    });
+
+    // ФОРМА (заглушка)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Заявка отправлена! (Подключи Formspree, чтобы получать на почту)');
+      this.reset();
+    });
+  </script>
+
 </body>
 </html>
