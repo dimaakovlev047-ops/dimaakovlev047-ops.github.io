@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Евгения Яковлева — женский коуч</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -16,7 +16,6 @@
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* Шапка */
     header {
       background: rgba(251, 244, 236, 0.95);
       padding: 16px 0;
@@ -39,10 +38,10 @@
       margin-left: 24px;
       font-weight: 600;
       font-size: 0.95rem;
+      transition: color 0.2s;
     }
     nav a:hover { color: #A5645C; }
 
-    /* Бургер (мобильное меню) */
     .burger {
       display: none;
       flex-direction: column;
@@ -60,7 +59,6 @@
       transition: 0.3s;
     }
 
-    /* Секции */
     section { padding: 70px 0; }
     .section-title {
       font-family: 'Playfair Display', serif;
@@ -85,18 +83,23 @@
       font-weight: 700;
       border: none;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
       font-size: 1rem;
     }
-    .btn:hover { background: #A5645C; }
+    .btn:hover { background: #A5645C; transform: translateY(-2px); }
     .btn-outline {
       background: transparent;
       border: 2px solid #C98A82;
       color: #C98A82;
     }
     .btn-outline:hover { background: #C98A82; color: #fff; }
+    .btn-mint {
+      background: #8BA58B;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(139, 165, 139, 0.3);
+    }
+    .btn-mint:hover { background: #6E8B6E; }
 
-    /* Герой */
     .hero {
       padding: 80px 0 60px;
       background: linear-gradient(180deg, #FBF4EC, #F4E9DC);
@@ -109,7 +112,7 @@
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 600;
       margin-bottom: 16px;
     }
@@ -130,7 +133,7 @@
       color: #C98A82;
       font-weight: 700;
     }
-    .hero .photo {
+    .photo {
       background: #E4D5C6;
       border-radius: 22px;
       aspect-ratio: 4/5;
@@ -144,8 +147,8 @@
       text-align: center;
       padding: 20px;
     }
+    .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px; }
 
-    /* Блоки */
     .bg-cream { background: #F4E9DC; }
     .bg-rose { background: #C98A82; color: #fff; }
     .bg-rose .section-title { color: #fff; }
@@ -153,12 +156,7 @@
     .bg-rose .btn { background: #fff; color: #C98A82; }
     .bg-rose .btn:hover { background: #FBF4EC; }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
@@ -167,9 +165,10 @@
       padding: 28px 24px;
       border-radius: 18px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(169, 100, 92, 0.08);
     }
-    .card:hover { transform: translateY(-4px); }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
     .card .icon { font-size: 2rem; margin-bottom: 8px; }
     .card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 6px; }
     .card p { color: #6B5750; font-size: 0.95rem; }
@@ -182,16 +181,17 @@
     .state-btn {
       background: #fff;
       border: none;
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 20px 16px;
       text-align: left;
       box-shadow: 0 4px 16px rgba(0,0,0,0.05);
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       font-family: 'Open Sans', sans-serif;
+      border: 1px solid rgba(169, 100, 92, 0.06);
     }
     .state-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-    .state-btn .icon { font-size: 1.6rem; display: block; margin-bottom: 6px; }
+    .state-btn .icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
     .state-btn .title { font-weight: 700; font-size: 0.95rem; color: #3E2E27; }
     .state-btn .desc { font-size: 0.85rem; color: #6B5750; }
 
@@ -200,6 +200,8 @@
       border-radius: 18px;
       padding: 32px;
       max-width: 500px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
     .free-card p { color: rgba(255,255,255,0.9); margin-bottom: 20px; }
 
@@ -208,6 +210,7 @@
       border-radius: 22px;
       padding: 40px;
       box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      border: 1px solid rgba(169, 100, 92, 0.08);
     }
     .product-card .price {
       font-family: 'Playfair Display', serif;
@@ -217,28 +220,68 @@
     }
     .product-card .price sup { font-size: 1rem; color: #6B5750; }
 
-    .review-placeholder {
-      background: repeating-linear-gradient(45deg, #F4E9DC, #F4E9DC 14px, #ecdfd0 14px, #ecdfd0 28px);
+    /* КАРУСЕЛЬ ОТЗЫВОВ */
+    .carousel {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      overflow: hidden;
       border-radius: 18px;
-      aspect-ratio: 16/10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6B5750;
-      font-weight: 600;
-      border: 2px dashed #C98A82;
-      text-align: center;
-      padding: 20px;
     }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .review-slide {
+      min-width: 100%;
+      padding: 6px;
+    }
+    .review-slide .review-content {
+      background: #fff;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      text-align: center;
+      border: 1px solid rgba(169, 100, 92, 0.08);
+    }
+    .review-slide .review-content .text {
+      font-style: italic;
+      color: #3E2E27;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+    .review-slide .review-content .name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: #A5645C;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .carousel-btn {
+      background: #fff;
+      border: 1px solid rgba(169, 100, 92, 0.2);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.2s;
+      color: #3E2E27;
+    }
+    .carousel-btn:hover { background: #F4E9DC; }
 
     /* Футер */
     footer {
-      background: #3E2E27;
-      color: rgba(255,255,255,0.7);
+      background: linear-gradient(160deg, #3E2E27, #2D1F1A);
+      color: rgba(255,255,255,0.8);
       padding: 70px 0 40px;
     }
-    footer .btn { background: #fff; color: #3E2E27; }
-    footer .btn:hover { background: #F4E9DC; }
+    footer .btn { background: #8BA58B; color: #fff; }
+    footer .btn:hover { background: #6E8B6E; }
     footer .grid-2 { align-items: start; }
     footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
     footer a:hover { color: #fff; }
@@ -255,7 +298,7 @@
       width: 100%;
       padding: 12px 16px;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.15);
       background: rgba(255,255,255,0.06);
       color: #fff;
       font-family: 'Open Sans', sans-serif;
@@ -265,7 +308,7 @@
     .form-group input::placeholder,
     .form-group textarea::placeholder { color: rgba(255,255,255,0.4); }
     .form-group input:focus,
-    .form-group textarea:focus { outline: 2px solid #C98A82; }
+    .form-group textarea:focus { outline: 2px solid #8BA58B; }
 
     .footer-bottom {
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -275,9 +318,9 @@
       justify-content: space-between;
       flex-wrap: wrap;
       font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
     }
 
-    /* Мобильная адаптация */
     @media (max-width: 820px) {
       .burger { display: flex; }
       nav {
@@ -311,7 +354,6 @@
 </head>
 <body>
 
-  <!-- ШАПКА -->
   <header>
     <div class="container header-wrap">
       <a href="#" class="logo">Евгения <span>Яковлева</span></a>
@@ -329,7 +371,6 @@
     </div>
   </header>
 
-  <!-- ГЕРОЙ -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
@@ -349,10 +390,9 @@
     </div>
   </section>
 
-  <!-- КТО Я -->
   <section id="about" class="bg-cream">
     <div class="container grid-2">
-      <div class="photo" style="aspect-ratio:4/5;">[ФОТО ЕВГЕНИИ]</div>
+      <div class="photo">[ФОТО ЕВГЕНИИ]</div>
       <div>
         <h2 class="section-title">Кто я</h2>
         <p style="color:#6B5750; margin-bottom:16px;"><strong>Меня зовут Евгения Яковлева.</strong></p>
@@ -368,7 +408,6 @@
     </div>
   </section>
 
-  <!-- С ЧЕГО НАЧАТЬ -->
   <section id="start">
     <div class="container">
       <h2 class="section-title">С чего начать</h2>
@@ -399,7 +438,6 @@
     </div>
   </section>
 
-  <!-- БЕСПЛАТНО -->
   <section id="free" class="bg-rose">
     <div class="container">
       <h2 class="section-title">🎁 Бесплатная диагностика</h2>
@@ -411,7 +449,6 @@
     </div>
   </section>
 
-  <!-- МИНИ-ПРОДУКТ -->
   <section id="mini" class="bg-cream">
     <div class="container">
       <div class="product-card grid-2" style="grid-template-columns:1fr 1fr; gap:40px;">
@@ -424,16 +461,16 @@
             <li>✔ мягкое возвращение к себе</li>
           </ul>
           <div class="price">490 ₽</div>
-          <a href="#" class="btn" onclick="alert('Замени ссылку на оплату через ЮKassa / Tinkoff'); return false;">Хочу пройти тоже</a>
+          <a href="#" class="btn btn-mint" onclick="alert('Замени ссылку на оплату через ЮKassa / Tinkoff'); return false;">Хочу пройти тоже</a>
         </div>
-        <div style="background:linear-gradient(160deg, #F0C6AC, #F4E9DC); border-radius:22px; aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;">
-          <span style="font-family:'Playfair Display',serif; font-size:6rem; color:#fff; text-shadow:0 8px 24px rgba(0,0,0,0.15);">7</span>
+        <div style="background:linear-gradient(160deg, #F0C6AC, #F4E9DC); border-radius:22px; aspect-ratio:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:30px; text-align:center; color:#A5645C;">
+          <span style="font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:600; color:#fff; text-shadow:0 4px 16px rgba(0,0,0,0.08);">7 дней</span>
+          <span style="color:rgba(255,255,255,0.85); font-size:1.1rem; margin-top:8px;">бережного возвращения к себе</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- РАБОТА СО МНОЙ -->
   <section id="work">
     <div class="container">
       <h2 class="section-title">Работа со мной</h2>
@@ -446,26 +483,45 @@
     </div>
   </section>
 
-  <!-- ОТЗЫВЫ -->
   <section id="reviews" class="bg-cream">
     <div class="container">
       <h2 class="section-title">Отзывы</h2>
-      <div class="grid-3">
-        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
-        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
-        <div class="review-placeholder">[СКРИН ОТЗЫВА]</div>
+      <div class="carousel">
+        <div class="carousel-track" id="reviewsTrack">
+          <div class="review-slide">
+            <div class="review-content">
+              <div class="text">«Это был первый раз, когда я честно ответила себе на вопрос "чего я хочу". Женя помогла мне услышать себя»</div>
+              <div class="name">— Марина, 34 года</div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="review-content">
+              <div class="text">«После ретрита я почувствовала, что могу дышать. Спасибо за бережность и глубину»</div>
+              <div class="name">— Алина, 29 лет</div>
+            </div>
+          </div>
+          <div class="review-slide">
+            <div class="review-content">
+              <div class="text">«7 дней к себе изменили моё утро. Я перестала просыпаться с тревогой. Это бесценно»</div>
+              <div class="name">— Ольга, 41 год</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevSlide">←</button>
+        <button class="carousel-btn" id="nextSlide">→</button>
       </div>
     </div>
   </section>
 
-  <!-- ПРИГЛАШЕНИЕ / КОНТАКТЫ -->
   <footer id="contact">
     <div class="container">
       <div class="grid-2">
         <div>
           <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:#fff; margin-bottom:16px;">Приглашение</h2>
-          <p style="color:rgba(255,255,255,0.8); margin-bottom:16px;">Возможно, сейчас именно то время, когда пора перестать искать ответы только снаружи.</p>
-          <p style="color:rgba(255,255,255,0.7);">Иногда достаточно сделать один маленький шаг навстречу себе. Я рядом 🤍</p>
+          <p style="color:rgba(255,255,255,0.8); margin-bottom:16px; font-size:1.05rem;">Возможно, сейчас именно то время, когда пора перестать искать ответы только снаружи.</p>
+          <p style="color:rgba(255,255,255,0.7); font-size:1.05rem;">Иногда достаточно сделать один маленький шаг навстречу себе. Я рядом 🤍</p>
         </div>
         <div>
           <form id="contactForm">
@@ -493,23 +549,27 @@
   </footer>
 
   <script>
-    // БУРГЕР-МЕНЮ
     const burger = document.getElementById('burger');
     const nav = document.getElementById('nav');
-    burger.addEventListener('click', function() {
-      nav.classList.toggle('open');
-    });
-    nav.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        nav.classList.remove('open');
-      });
-    });
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
 
-    // ФОРМА (заглушка)
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Заявка отправлена! (Подключи Formspree, чтобы получать на почту)');
       this.reset();
+    });
+
+    const track = document.getElementById('reviewsTrack');
+    let current = 0;
+    const slides = track.querySelectorAll('.review-slide');
+    document.getElementById('nextSlide').addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+    });
+    document.getElementById('prevSlide').addEventListener('click', () => {
+      current = (current - 1 + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
     });
   </script>
 
