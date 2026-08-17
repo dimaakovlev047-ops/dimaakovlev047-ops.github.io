@@ -293,40 +293,28 @@
   /* ============ МИНИ-ПРОДУКТ ============ */
   .mini{ padding:90px 0; background:var(--cream); }
   .mini-inner{
-    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
-    background:var(--paper); border-radius:var(--radius); padding:50px; box-shadow:var(--shadow);
+    display:grid;
+    grid-template-columns:1fr;
+    text-align:center;
+    background:var(--paper);
+    border-radius:var(--radius);
+    padding:50px;
+    box-shadow:var(--shadow);
   }
-  .mini-list{ display:flex; flex-direction:column; gap:14px; margin:22px 0 30px; }
+  .mini-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin:22px 0 30px;
+    align-items:center;
+  }
   .mini-list li{ display:flex; gap:12px; color:var(--ink-soft); }
 
   .price{
-    font-family:var(--display); font-size:2.3rem; color:var(--rose-deep);
-    margin-bottom:22px;
-  }
-  .price sup{ font-size:1rem; font-weight:600; color:var(--ink-soft); margin-left:8px;}
-  .mini-visual{
-    background:linear-gradient(160deg, var(--peach), var(--cream-deep));
-    border-radius:var(--radius);
-    aspect-ratio:1/1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:30px;
-    text-align:center;
-  }
-
-  .mini-visual .days{
     font-family:var(--display);
-    font-size:5.5rem;
-    color:#fff;
-    text-shadow:0 10px 24px rgba(62,46,39,0.25);
-  }
-
-  .mini-visual .sub{
-    color:rgba(255,255,255,0.85);
-    font-size:1rem;
-    margin-top:6px;
+    font-size:2.3rem;
+    color:var(--rose-deep);
+    margin-bottom:22px;
   }
 
   /* ============ РАБОТА СО МНОЙ ============ */
@@ -625,10 +613,6 @@
         </ul>
         <div class="price">490 ₽</div>
         <a href="#" class="btn" data-payment-stub>Хочу пройти тоже</a>
-      </div>
-      <div class="mini-visual reveal" aria-hidden="true">
-        <span class="days">7 дней</span>
-        <span class="sub">бережного возвращения к себе</span>
       </div>
     </div>
   </div>
