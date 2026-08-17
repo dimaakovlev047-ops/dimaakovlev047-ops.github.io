@@ -8,64 +8,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
-/* ===== БУРГЕР-ФИКС ===== */
-.burger {
-  display: none !important;
-  flex-direction: column !important;
-  gap: 5px !important;
-  background: none !important;
-  border: none !important;
-  cursor: pointer !important;
-  padding: 5px !important;
-  z-index: 9999 !important;
-}
-.burger span {
-  width: 28px !important;
-  height: 2px !important;
-  background: #3E2E27 !important;
-  border-radius: 2px !important;
-  display: block !important;
-}
 
-@media (max-width: 820px) {
-  .burger {
-    display: flex !important;
-  }
-  nav {
-    display: none !important;
-    flex-direction: column !important;
-    background: #FBF4EC !important;
-    padding: 30px 24px !important;
-    position: fixed !important;
-    top: 70px !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
-    z-index: 9998 !important;
-    overflow-y: auto !important;
-  }
-  nav.open {
-    display: flex !important;
-  }
-  nav a {
-    margin: 8px 0 !important;
-    font-size: 1.1rem !important;
-  }
-}
+  /* ============ ТОКЕНЫ ============ */
   :root{
-    --cream:      #FBF4EC;
-    --cream-deep: #F4E9DC;
-    --peach:      #F0C6AC;
-    --rose:       #C98A82;
-    --rose-deep:  #A5645C;
-    --sage:       #93A382;
-    --ink:        #3E2E27;
-    --ink-soft:   #6B5750;
-    --paper:      #FFFDFB;
+    --cream:      #FBF4EC;   /* базовый фон */
+    --cream-deep: #F4E9DC;   /* фон вторичных блоков */
+    --peach:      #F0C6AC;   /* тёплый акцент-заливка */
+    --rose:       #C98A82;   /* основной акцент, кнопки */
+    --rose-deep:  #A5645C;   /* hover / тёмный акцент */
+    --sage:       #93A382;   /* акцент "дыхания" — редко, для сигнатурных элементов */
+    --ink:        #3E2E27;   /* основной текст */
+    --ink-soft:   #6B5750;   /* второстепенный текст */
+    --paper:      #FFFDFB;   /* карточки */
+
     --display: 'Playfair Display', serif;
     --body: 'Open Sans', sans-serif;
     --script: 'Caveat', cursive;
+
     --radius: 22px;
     --radius-sm: 14px;
     --shadow: 0 18px 40px -20px rgba(62,46,39,0.28);
@@ -74,6 +33,11 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
   body{
     font-family:var(--body);
     color:var(--ink);
@@ -81,11 +45,14 @@
     line-height:1.6;
     overflow-x:hidden;
   }
+
   img,svg{ display:block; max-width:100%; }
   a{ color:inherit; text-decoration:none; }
   ul{ list-style:none; }
   button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
   .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 28px; }
+
   h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:0.2px; }
 
   .eyebrow{
@@ -95,17 +62,20 @@
     display:block;
     margin-bottom:4px;
   }
+
   .section-title{
     font-size:clamp(1.9rem, 3.4vw, 2.7rem);
     color:var(--ink);
     margin-bottom:18px;
   }
+
   .section-lead{
     color:var(--ink-soft);
     font-size:1.08rem;
     max-width:620px;
     margin-bottom:44px;
   }
+
   .btn{
     display:inline-flex;
     align-items:center;
@@ -122,6 +92,8 @@
     position:relative;
   }
   .btn:hover{ background:var(--rose-deep); transform:translateY(-2px); box-shadow:0 18px 32px -12px rgba(169,100,92,0.6); }
+  .btn:focus-visible{ outline:3px solid var(--sage); outline-offset:3px; }
+
   .btn-ghost{
     background:transparent;
     color:var(--rose-deep);
@@ -129,11 +101,14 @@
     box-shadow:none;
   }
   .btn-ghost:hover{ background:var(--rose); color:#fff; }
+
+  /* дышащий импульс на главной кнопке-приглашении */
   .btn-breathe{ animation:breathe 4.5s ease-in-out infinite; }
   @keyframes breathe{
     0%,100%{ box-shadow:0 14px 28px -12px rgba(169,100,92,0.55), 0 0 0 0 rgba(201,138,130,0.35); }
     50%{ box-shadow:0 14px 28px -12px rgba(169,100,92,0.55), 0 0 0 14px rgba(201,138,130,0); }
   }
+
   .photo-placeholder{
     aspect-ratio:4/5;
     border-radius:var(--radius);
@@ -148,16 +123,30 @@
     font-weight:600;
     font-size:0.95rem;
   }
+
+  /* scroll reveal */
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
   .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  /* ============ ВОЛНА-РАЗДЕЛИТЕЛЬ (сигнатурный элемент) ============ */
   .wave{ width:100%; line-height:0; }
   .wave svg{ width:100%; height:60px; }
 
+  /* ============ ХЭДЕР ============ */
   .site-header{
     position:sticky; top:0; z-index:100;
     background:rgba(251,244,236,0.9);
-    backdrop-filter:blur(10px);
     border-bottom:1px solid rgba(169,100,92,0.15);
+  }
+  /* блюр вынесен в псевдоэлемент: если повесить backdrop-filter прямо на .site-header,
+     браузер превращает его в "containing block" и мобильное меню с position:fixed
+     перестаёт быть полноэкранным оверлеем и съезжает в поток контента */
+  .site-header::before{
+    content:"";
+    position:absolute; inset:0;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    z-index:-1;
   }
   .header-inner{
     display:flex; align-items:center; justify-content:space-between;
@@ -170,6 +159,7 @@
     color:var(--ink);
   }
   .logo span{ color:var(--rose-deep); font-family:var(--script); font-size:1.55rem; font-weight:500; margin-left:2px; }
+
   .nav{
     display:flex; align-items:center; gap:30px;
   }
@@ -184,26 +174,18 @@
   }
   .nav a:hover{ color:var(--ink); }
   .nav a:hover::after{ width:100%; }
+
   .header-actions{ display:flex; align-items:center; gap:18px; }
 
   .burger{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    width:30px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:5px;
-    z-index:1000;
+    display:none; flex-direction:column; gap:5px; width:30px;
   }
-  .burger span{
-    height:2px;
-    background:var(--ink);
-    border-radius:2px;
-    transition:all .25s ease;
-  }
+  .burger span{ height:2px; background:var(--ink); border-radius:2px; transition:all .25s ease; }
+  .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
+  /* ============ HERO ============ */
   .hero{
     background:linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
     padding:70px 0 40px;
@@ -219,9 +201,7 @@
     line-height:1.08;
     margin:6px 0 26px;
   }
-  .hero-list{
-    display:flex; flex-direction:column; gap:14px; margin-bottom:34px;
-  }
+  .hero-list{ display:flex; flex-direction:column; gap:14px; margin-bottom:34px; }
   .hero-list li{
     display:flex; align-items:flex-start; gap:12px;
     font-size:1.03rem; color:var(--ink-soft);
@@ -229,6 +209,7 @@
   .hero-list li::before{
     content:"◡"; color:var(--rose); font-size:1.1rem; line-height:1.5; flex:0 0 auto;
   }
+
   .hero-photo{ position:relative; }
   .breathe-ring{
     position:absolute; inset:-30px;
@@ -243,6 +224,7 @@
     50%{ transform:scale(1.03); opacity:0.15; }
   }
 
+  /* ============ ОБЩИЙ ДВУХКОЛОНОЧНЫЙ БЛОК (Кто я) ============ */
   .about{ padding:90px 0; background:var(--cream); }
   .about-inner{
     display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;
@@ -256,6 +238,8 @@
     box-shadow:0 8px 20px -14px rgba(62,46,39,0.3);
   }
 
+
+  /* ============ С ЧЕГО НАЧАТЬ ============ */
   .start{ padding:90px 0; background:var(--cream-deep); }
   .start-grid{
     display:grid; grid-template-columns:repeat(5,1fr); gap:18px;
@@ -271,10 +255,12 @@
     height:100%;
   }
   .state-card:hover{ transform:translateY(-6px); }
+  .state-card:focus-visible{ outline:3px solid var(--sage); outline-offset:3px; }
   .state-card .ico{ font-size:1.7rem; }
   .state-card .title{ font-weight:700; font-size:1.02rem; }
   .state-card .hint{ font-size:0.88rem; color:var(--ink-soft); }
 
+  /* ============ БЕСПЛАТНО ============ */
   .free{
     padding:90px 0;
     background:var(--rose);
@@ -295,6 +281,7 @@
   .free .btn{ background:#fff; color:var(--rose-deep); box-shadow:none; }
   .free .btn:hover{ background:var(--cream); }
 
+  /* ============ МИНИ-ПРОДУКТ ============ */
   .mini{ padding:90px 0; background:var(--cream); }
   .mini-inner{
     display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
@@ -302,6 +289,7 @@
   }
   .mini-list{ display:flex; flex-direction:column; gap:14px; margin:22px 0 30px; }
   .mini-list li{ display:flex; gap:12px; color:var(--ink-soft); }
+
   .price{
     font-family:var(--display); font-size:2.3rem; color:var(--rose-deep);
     margin-bottom:22px;
@@ -320,6 +308,7 @@
   }
   .payment-note{ font-size:0.82rem; color:var(--ink-soft); margin-top:10px; }
 
+  /* ============ РАБОТА СО МНОЙ ============ */
   .work{ padding:90px 0; background:var(--cream-deep); }
   .work-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   .work-card{
@@ -331,6 +320,7 @@
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
+  /* ============ ОТЗЫВЫ ============ */
   .reviews{ padding:90px 0; background:var(--cream); }
   .carousel{ position:relative; max-width:760px; margin:0 auto; }
   .carousel-track{ overflow:hidden; border-radius:var(--radius); }
@@ -359,6 +349,7 @@
   .dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); }
   .dot.active{ background:var(--rose-deep); }
 
+  /* ============ ПРИГЛАШЕНИЕ / ПОДВАЛ ============ */
   .invite{
     padding:100px 0 60px;
     background:var(--ink);
@@ -372,6 +363,7 @@
   .invite .eyebrow{ color:var(--peach); }
   .invite h2{ color:#fff; font-size:clamp(1.9rem,3.4vw,2.6rem); margin-bottom:18px; }
   .invite p{ color:rgba(251,244,236,0.78); max-width:480px; margin-bottom:10px; }
+
   .invite-form{
     background:rgba(251,244,236,0.06);
     border:1px solid rgba(251,244,236,0.18);
@@ -392,12 +384,14 @@
   .field input:focus, .field textarea:focus{ outline:2px solid var(--sage); }
   .field textarea{ resize:vertical; min-height:90px; }
   .form-note{ font-size:0.78rem; color:rgba(251,244,236,0.5); }
+
   .footer-bottom{
     margin-top:70px; padding-top:26px; border-top:1px solid rgba(251,244,236,0.15);
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
     font-size:0.85rem; color:rgba(251,244,236,0.55);
   }
 
+  /* ============ МОДАЛЬНЫЕ ОКНА ============ */
   .modal-overlay{
     position:fixed; inset:0; background:rgba(62,46,39,0.55);
     display:flex; align-items:center; justify-content:center;
@@ -433,6 +427,7 @@
   .success-box .ico{ font-size:2.4rem; margin-bottom:10px; }
   .success-box a{ color:var(--rose-deep); font-weight:700; text-decoration:underline; }
 
+  /* ============ АДАПТИВ ============ */
   @media (max-width:980px){
     .hero-inner, .about-inner, .mini-inner, .invite-inner{ grid-template-columns:1fr; }
     .hero-photo{ order:-1; max-width:340px; margin:0 auto; }
@@ -440,25 +435,17 @@
     .work-grid{ grid-template-columns:repeat(2,1fr); }
   }
 
-  @media (max-width:760px){
+  @media (max-width:820px){
     .nav{
       position:fixed; top:64px; left:0; right:0; bottom:0;
-      background:var(--cream);
-      flex-direction:column;
-      align-items:flex-start;
-      padding:30px 28px;
-      gap:22px;
-      transform:translateX(100%);
-      transition:transform .3s ease;
-      z-index:999;
+      background:var(--cream); flex-direction:column; align-items:flex-start;
+      padding:30px 28px; gap:22px;
+      transform:translateX(100%); transition:transform .3s ease;
+      z-index:99; pointer-events:none;
+      box-shadow:0 20px 40px -20px rgba(62,46,39,0.35);
     }
-    .nav.open{
-      transform:translateX(0);
-    }
-    .burger{
-      display:flex;
-      z-index:1000;
-    }
+    .nav.open{ transform:translateX(0); pointer-events:auto; }
+    .burger{ display:flex; }
     .header-actions .btn span{ display:none; }
     .start-grid, .work-grid{ grid-template-columns:1fr; }
     .mini-inner{ padding:30px; }
@@ -469,6 +456,7 @@
 </head>
 <body>
 
+<!-- ============ ХЭДЕР ============ -->
 <header class="site-header">
   <div class="header-inner wrap">
     <a href="#hero" class="logo">Евгения<span>Яковлева</span></a>
@@ -489,6 +477,7 @@
   </div>
 </header>
 
+<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="wrap hero-inner">
     <div class="hero-copy reveal">
@@ -507,17 +496,22 @@
     </div>
     <div class="hero-photo reveal">
       <div class="breathe-ring" aria-hidden="true"></div>
-      <div class="photo-placeholder">[ВСТАВИТЬ ФОТО ЕВГЕНИИ]</div>
+      <div class="photo-placeholder">
+        <img src="evgenia1.jpg" alt="Евгения Яковлева" style="width:100%; height:100%; object-fit:cover; border-radius:22px;">
+      </div>
     </div>
   </div>
 </section>
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#F4E9DC"></path></svg></div>
 
+<!-- ============ КТО Я ============ -->
 <section class="about" id="about">
   <div class="wrap about-inner">
     <div class="about-photo reveal">
-      <div class="photo-placeholder">[ВСТАВИТЬ ФОТО — портрет или в работе]</div>
+      <div class="photo-placeholder">
+        <img src="evgenia2.jpg" alt="Евгения Яковлева" style="width:100%; height:100%; object-fit:cover; border-radius:22px;">
+      </div>
     </div>
     <div class="about-text reveal">
       <span class="eyebrow">Кто я</span>
@@ -534,6 +528,7 @@
   </div>
 </section>
 
+<!-- ============ С ЧЕГО НАЧАТЬ ============ -->
 <section class="start" id="start">
   <div class="wrap">
     <span class="eyebrow reveal">Навигация</span>
@@ -567,6 +562,7 @@
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,-10 900,70 1200,30 L1200,0 L0,0 Z" fill="#C98A82"></path></svg></div>
 
+<!-- ============ БЕСПЛАТНО ============ -->
 <section class="free" id="free">
   <div class="wrap free-inner">
     <span class="eyebrow" style="color:#fff;">Первый шаг</span>
@@ -578,6 +574,7 @@
   </div>
 </section>
 
+<!-- ============ МИНИ-ПРОДУКТ ============ -->
 <section class="mini" id="mini">
   <div class="wrap">
     <div class="mini-inner">
@@ -601,6 +598,7 @@
   </div>
 </section>
 
+<!-- ============ РАБОТА СО МНОЙ ============ -->
 <section class="work" id="work">
   <div class="wrap">
     <span class="eyebrow reveal">Форматы</span>
@@ -632,6 +630,7 @@
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FBF4EC"></path></svg></div>
 
+<!-- ============ ОТЗЫВЫ ============ -->
 <section class="reviews" id="reviews">
   <div class="wrap">
     <span class="eyebrow reveal">Истории</span>
@@ -641,15 +640,21 @@
       <div class="carousel-track">
         <div class="carousel-slides" id="carouselSlides">
           <div class="review-slide">
-            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-shot">
+              <img src="review1.jpg" alt="Отзыв Марины" style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+            </div>
             <div class="review-name">— Марина, 34 года</div>
           </div>
           <div class="review-slide">
-            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-shot">
+              <img src="review2.jpg" alt="Отзыв Алины" style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+            </div>
             <div class="review-name">— Алина, 29 лет</div>
           </div>
           <div class="review-slide">
-            <div class="review-shot">[ВСТАВИТЬ СКРИН ОТЗЫВА]</div>
+            <div class="review-shot">
+              <img src="review3.jpg" alt="Отзыв Ольги" style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+            </div>
             <div class="review-name">— Ольга, 41 год</div>
           </div>
         </div>
@@ -663,6 +668,7 @@
   </div>
 </section>
 
+<!-- ============ ПРИГЛАШЕНИЕ / ПОДВАЛ ============ -->
 <footer class="invite" id="contact">
   <div class="wrap invite-inner">
     <div class="invite-copy reveal">
@@ -694,6 +700,7 @@
   </div>
 </footer>
 
+<!-- ============ МОДАЛКА: ЗАПИСАТЬСЯ ============ -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -720,6 +727,7 @@
   </div>
 </div>
 
+<!-- ============ МОДАЛКА: ДИАГНОСТИКА ============ -->
 <div class="modal-overlay" id="diagModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -747,6 +755,7 @@
   </div>
 </div>
 
+<!-- ============ МОДАЛКА: ОПИСАНИЕ СОСТОЯНИЯ ============ -->
 <div class="modal-overlay" id="stateModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -762,16 +771,49 @@
 (function(){
   "use strict";
 
+  /* ---------- бургер-меню ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
-  burger.addEventListener('click', function(){
-    var isOpen = nav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', isOpen);
-  });
-  nav.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){ nav.classList.remove('open'); });
+
+  function openNav(){
+    nav.classList.add('open');
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+  }
+  function closeNav(){
+    nav.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }
+
+  burger.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(nav.classList.contains('open')){
+      closeNav();
+    } else {
+      openNav();
+    }
   });
 
+  nav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){ closeNav(); });
+  });
+
+  // закрытие по клику вне меню
+  document.addEventListener('click', function(e){
+    if(nav.classList.contains('open') && !nav.contains(e.target) && !burger.contains(e.target)){
+      closeNav();
+    }
+  });
+
+  // закрытие по Esc
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('open')){
+      closeNav();
+    }
+  });
+
+  /* ---------- scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
@@ -787,7 +829,9 @@
     revealEls.forEach(function(el){ el.classList.add('visible'); });
   }
 
+  /* ---------- модальные окна ---------- */
   var lastFocused = null;
+
   function openModal(id){
     var modal = document.getElementById(id);
     if(!modal) return;
@@ -797,9 +841,11 @@
     var focusable = modal.querySelector('input, button');
     if(focusable) focusable.focus();
   }
+
   function closeModal(modal){
     modal.classList.remove('open');
     document.body.style.overflow = '';
+    // сброс состояния формы/успеха при закрытии
     var form = modal.querySelector('form');
     var success = modal.querySelector('.success-box');
     if(form) form.style.display = '';
@@ -838,6 +884,7 @@
     }
   });
 
+  /* ---------- фейковая отправка форм в модалках ---------- */
   document.querySelectorAll('[data-fake-submit]').forEach(function(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -848,6 +895,7 @@
     });
   });
 
+  /* ---------- "PDF"-заглушка ---------- */
   document.querySelectorAll('[data-fake-pdf]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
@@ -855,6 +903,7 @@
     });
   });
 
+  /* ---------- кнопка оплаты — заглушка ---------- */
   document.querySelectorAll('[data-payment-stub]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
@@ -862,6 +911,7 @@
     });
   });
 
+  /* ---------- карточки "с чего начать" ---------- */
   var stateContent = {
     tired: {
       title: 'Я постоянно устаю',
@@ -895,6 +945,7 @@
     });
   });
 
+  /* ---------- форма приглашения (футер) ---------- */
   var inviteForm = document.getElementById('inviteForm');
   inviteForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -902,6 +953,7 @@
     inviteForm.reset();
   });
 
+  /* ---------- карусель отзывов ---------- */
   var track = document.getElementById('carouselSlides');
   var slides = track.querySelectorAll('.review-slide');
   var dotsWrap = document.getElementById('carouselDots');
@@ -925,6 +977,25 @@
 
   document.getElementById('prevSlide').addEventListener('click', function(){ goTo(current - 1); });
   document.getElementById('nextSlide').addEventListener('click', function(){ goTo(current + 1); });
+
+  // ===== ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ =====
+  document.querySelectorAll('.nav a, .hero-copy a[href^="#"], .invite-copy a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var targetId = this.getAttribute('href');
+      if (targetId && targetId.startsWith('#')) {
+        var targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          var headerHeight = document.querySelector('.site-header').offsetHeight;
+          var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
 
 })();
 </script>
