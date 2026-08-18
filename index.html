@@ -6,25 +6,21 @@
 <title>Евгения Яковлева — женский коуч</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Open+Sans:wght@400;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <style>
-
-  /* ============ ТОКЕНЫ ============ */
   :root{
-    --cream:      #FBF4EC;   /* базовый фон */
-    --cream-deep: #F4E9DC;   /* фон вторичных блоков */
-    --peach:      #F0C6AC;   /* тёплый акцент-заливка */
-    --rose:       #C98A82;   /* основной акцент, кнопки */
-    --rose-deep:  #A5645C;   /* hover / тёмный акцент */
-    --sage:       #93A382;   /* акцент "дыхания" — редко, для сигнатурных элементов */
-    --ink:        #3E2E27;   /* основной текст */
-    --ink-soft:   #6B5750;   /* второстепенный текст */
-    --paper:      #FFFDFB;   /* карточки */
-
+    --cream:      #FBF4EC;
+    --cream-deep: #F4E9DC;
+    --peach:      #F0C6AC;
+    --rose:       #C98A82;
+    --rose-deep:  #A5645C;
+    --sage:       #93A382;
+    --ink:        #3E2E27;
+    --ink-soft:   #6B5750;
+    --paper:      #FFFDFB;
     --display: 'Playfair Display', serif;
     --body: 'Open Sans', sans-serif;
     --script: 'Caveat', cursive;
-
     --radius: 22px;
     --radius-sm: 14px;
     --shadow: 0 18px 40px -20px rgba(62,46,39,0.28);
@@ -33,11 +29,6 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
-  }
-
   body{
     font-family:var(--body);
     color:var(--ink);
@@ -94,15 +85,6 @@
   .btn:hover{ background:var(--rose-deep); transform:translateY(-2px); box-shadow:0 18px 32px -12px rgba(169,100,92,0.6); }
   .btn:focus-visible{ outline:3px solid var(--sage); outline-offset:3px; }
 
-  .btn-ghost{
-    background:transparent;
-    color:var(--rose-deep);
-    border:1.5px solid var(--rose);
-    box-shadow:none;
-  }
-  .btn-ghost:hover{ background:var(--rose); color:#fff; }
-
-  /* дышащий импульс на главной кнопке-приглашении */
   .btn-breathe{ animation:breathe 4.5s ease-in-out infinite; }
   @keyframes breathe{
     0%,100%{ box-shadow:0 14px 28px -12px rgba(169,100,92,0.55), 0 0 0 0 rgba(201,138,130,0.35); }
@@ -133,23 +115,17 @@
     display:block;
   }
 
-  /* scroll reveal */
   .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
   .reveal.visible{ opacity:1; transform:translateY(0); }
 
-  /* ============ ВОЛНА-РАЗДЕЛИТЕЛЬ (сигнатурный элемент) ============ */
   .wave{ width:100%; line-height:0; }
   .wave svg{ width:100%; height:60px; }
 
-  /* ============ ХЭДЕР ============ */
   .site-header{
     position:sticky; top:0; z-index:100;
     background:rgba(251,244,236,0.9);
     border-bottom:1px solid rgba(169,100,92,0.15);
   }
-  /* блюр вынесен в псевдоэлемент: если повесить backdrop-filter прямо на .site-header,
-     браузер превращает его в "containing block" и мобильное меню с position:fixed
-     перестаёт быть полноэкранным оверлеем и съезжает в поток контента */
   .site-header::before{
     content:"";
     position:absolute; inset:0;
@@ -166,8 +142,9 @@
     font-size:1.35rem;
     font-weight:700;
     color:var(--ink);
+    font-style:italic;
   }
-  .logo span{ color:var(--rose-deep); font-family:var(--script); font-size:1.55rem; font-weight:500; margin-left:2px; }
+  .logo span{ color:var(--rose-deep); font-style:italic; }
 
   .nav{
     display:flex; align-items:center; gap:30px;
@@ -194,7 +171,6 @@
   .burger.open span:nth-child(2){ opacity:0; }
   .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
-  /* ============ HERO ============ */
   .hero{
     background:linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
     padding:70px 0 40px;
@@ -206,7 +182,9 @@
   }
   .hero-eyebrow{ font-family:var(--script); font-size:1.6rem; color:var(--rose-deep); }
   .hero h1{
+    font-family:var(--display);
     font-size:clamp(2.5rem, 5vw, 3.6rem);
+    font-style:italic;
     line-height:1.08;
     margin:6px 0 26px;
   }
@@ -233,7 +211,6 @@
     50%{ transform:scale(1.03); opacity:0.15; }
   }
 
-  /* ============ ОБЩИЙ ДВУХКОЛОНОЧНЫЙ БЛОК (Кто я) ============ */
   .about{ padding:90px 0; background:var(--cream); }
   .about-inner{
     display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; align-items:center;
@@ -247,8 +224,6 @@
     box-shadow:0 8px 20px -14px rgba(62,46,39,0.3);
   }
 
-
-  /* ============ С ЧЕГО НАЧАТЬ ============ */
   .start{ padding:90px 0; background:var(--cream-deep); }
   .start-grid{
     display:grid; grid-template-columns:repeat(5,1fr); gap:18px;
@@ -259,17 +234,18 @@
     padding:28px 20px;
     text-align:left;
     box-shadow:var(--shadow);
-    transition:transform .25s ease, box-shadow .25s ease;
-    display:flex; flex-direction:column; gap:10px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
     height:100%;
+    pointer-events:none;
   }
-  .state-card:hover{ transform:translateY(-6px); }
-  .state-card:focus-visible{ outline:3px solid var(--sage); outline-offset:3px; }
   .state-card .ico{ font-size:1.7rem; }
   .state-card .title{ font-weight:700; font-size:1.02rem; }
   .state-card .hint{ font-size:0.88rem; color:var(--ink-soft); }
 
-  /* ============ БЕСПЛАТНО ============ */
+  .start .btn-wrap{ margin-top:30px; text-align:center; }
+
   .free{
     padding:90px 0;
     background:var(--rose);
@@ -290,7 +266,6 @@
   .free .btn{ background:#fff; color:var(--rose-deep); box-shadow:none; }
   .free .btn:hover{ background:var(--cream); }
 
-  /* ============ МИНИ-ПРОДУКТ ============ */
   .mini{ padding:90px 0; background:var(--cream); }
   .mini-inner{
     display:grid;
@@ -310,14 +285,6 @@
   }
   .mini-list li{ display:flex; gap:12px; color:var(--ink-soft); }
 
-  .price{
-    font-family:var(--display);
-    font-size:2.3rem;
-    color:var(--rose-deep);
-    margin-bottom:22px;
-  }
-
-  /* ============ РАБОТА СО МНОЙ ============ */
   .work{ padding:90px 0; background:var(--cream-deep); }
   .work-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   .work-card{
@@ -329,9 +296,8 @@
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
-  /* ============ ОТЗЫВЫ ============ */
   .reviews{ padding:90px 0; background:var(--cream); }
-  .carousel{ position:relative; max-width:760px; margin:0 auto; }
+  .carousel{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; }
   .carousel-track{ overflow:hidden; border-radius:var(--radius); }
   .carousel-slides{ display:flex; transition:transform .5s ease; }
   .review-slide{ min-width:100%; padding:6px; }
@@ -369,11 +335,51 @@
     transition:background .2s ease;
   }
   .carousel-btn:hover{ background:var(--peach); }
-  .carousel-dots{ display:flex; gap:8px; }
-  .dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); }
+  .carousel-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); cursor:pointer; }
   .dot.active{ background:var(--rose-deep); }
 
-  /* ============ ПРИГЛАШЕНИЕ / ПОДВАЛ ============ */
+  .diplomas{ padding:90px 0; background:var(--cream-deep); }
+  .diploma-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .diploma-card{
+    background:var(--paper);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  .diploma-card .diploma-placeholder{
+    background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
+    border:2px dashed var(--rose);
+    border-radius:var(--radius-sm);
+    aspect-ratio:3/4;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--rose-deep);
+    font-weight:600;
+    padding:20px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .diploma-card .diploma-placeholder img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:var(--radius-sm);
+    display:block;
+  }
+  .diploma-card .diploma-name{
+    margin-top:12px;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+
   .invite{
     padding:100px 0 60px;
     background:var(--ink);
@@ -415,7 +421,6 @@
     font-size:0.85rem; color:rgba(251,244,236,0.55);
   }
 
-  /* ============ МОДАЛЬНЫЕ ОКНА ============ */
   .modal-overlay{
     position:fixed; inset:0; background:rgba(62,46,39,0.55);
     display:flex; align-items:center; justify-content:center;
@@ -451,45 +456,56 @@
   .success-box .ico{ font-size:2.4rem; margin-bottom:10px; }
   .success-box a{ color:var(--rose-deep); font-weight:700; text-decoration:underline; }
 
-  /* ============ АДАПТИВ ============ */
   @media (max-width:980px){
     .hero-inner, .about-inner, .mini-inner, .invite-inner{ grid-template-columns:1fr; }
     .hero-photo{ order:-1; max-width:340px; margin:0 auto; }
     .start-grid{ grid-template-columns:repeat(2,1fr); }
     .work-grid{ grid-template-columns:repeat(2,1fr); }
+    .diploma-grid{ grid-template-columns:repeat(2,1fr); }
   }
 
   @media (max-width:820px){
     .nav{
       position:fixed; top:64px; left:0; right:0; bottom:0;
-      background:var(--cream); flex-direction:column; align-items:flex-start;
-      padding:30px 28px; gap:22px;
-      transform:translateX(100%); transition:transform .3s ease;
-      z-index:99; pointer-events:none;
+      background:var(--cream);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:30px 28px;
+      gap:22px;
+      transform:translateX(100%);
+      transition:transform .3s ease;
+      z-index:99;
+      pointer-events:none;
       box-shadow:0 20px 40px -20px rgba(62,46,39,0.35);
     }
     .nav.open{ transform:translateX(0); pointer-events:auto; }
     .burger{ display:flex; }
     .header-actions .btn span{ display:none; }
     .start-grid, .work-grid{ grid-template-columns:1fr; }
+    .diploma-grid{ grid-template-columns:1fr; }
     .mini-inner{ padding:30px; }
     .invite-inner{ gap:36px; }
     .footer-bottom{ flex-direction:column; }
+  }
+
+  @media (max-width:550px){
+    .start-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ============ ХЭДЕР ============ -->
 <header class="site-header">
   <div class="header-inner wrap">
-    <a href="#hero" class="logo">Евгения<span>Яковлева</span></a>
+    <a href="#hero" class="logo">Евгения <span>Яковлева</span></a>
     <nav class="nav" id="nav">
       <a href="#about">Кто я</a>
+      <a href="#start">С чего начать</a>
       <a href="#free">Бесплатно</a>
       <a href="#mini">Мини-продукт</a>
       <a href="#work">Работа со мной</a>
       <a href="#reviews">Отзывы</a>
+      <a href="#diplomas">Дипломы</a>
       <a href="#contact">Контакты</a>
     </nav>
     <div class="header-actions">
@@ -501,12 +517,11 @@
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="wrap hero-inner">
     <div class="hero-copy reveal">
       <span class="hero-eyebrow">Привет!</span>
-      <h1>Я Женя</h1>
+      <h1>Евгения Яковлева</h1>
       <p style="color:var(--ink-soft); margin-bottom:18px;">Если ты здесь, скорее всего, сейчас в твоей жизни один из таких периодов:</p>
       <ul class="hero-list">
         <li>ты устала жить в режиме "надо"</li>
@@ -529,7 +544,6 @@
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#F4E9DC"></path></svg></div>
 
-<!-- ============ КТО Я ============ -->
 <section class="about" id="about">
   <div class="wrap about-inner">
     <div class="about-photo reveal">
@@ -539,7 +553,7 @@
     </div>
     <div class="about-text reveal">
       <span class="eyebrow">Кто я</span>
-      <h2 class="section-title">Меня зовут Евгения Яковлева</h2>
+      <h2 class="section-title">Евгения Яковлева</h2>
       <p>Когда-то у меня был успешный бизнес, который существовал почти 16 лет. Со стороны всё выглядело прекрасно. Но внутри были тревога, постоянный контроль, усталость и ощущение, что я потеряла себя. Закрыв этот этап жизни, я поняла, что моё настоящее предназначение — помогать женщинам возвращаться к себе.</p>
       <p style="font-weight:600; color:var(--ink);">Сегодня я:</p>
       <ul class="about-list">
@@ -552,41 +566,42 @@
   </div>
 </section>
 
-<!-- ============ С ЧЕГО НАЧАТЬ ============ -->
 <section class="start" id="start">
   <div class="wrap">
     <span class="eyebrow reveal">Навигация</span>
     <h2 class="section-title reveal">С чего начать</h2>
     <p class="section-lead reveal">Ответь себе честно. Что сейчас ближе всего?</p>
     <div class="start-grid">
-      <button class="state-card reveal" data-state="tired">
+      <div class="state-card reveal">
         <span class="ico">🌿</span>
         <span class="title">Я постоянно устаю</span>
-      </button>
-      <button class="state-card reveal" data-state="lost">
-        <span class="ico">🌿</span>
+      </div>
+      <div class="state-card reveal">
+        <span class="ico">🌾</span>
         <span class="title">Потеряла себя</span>
-      </button>
-      <button class="state-card reveal" data-state="relationships">
-        <span class="ico">🌿</span>
+      </div>
+      <div class="state-card reveal">
+        <span class="ico">🤍</span>
         <span class="title">Не могу построить отношения</span>
-      </button>
-      <button class="state-card reveal" data-state="good">
-        <span class="ico">🌿</span>
+      </div>
+      <div class="state-card reveal">
+        <span class="ico">🌤️</span>
         <span class="title">Всё хорошо, но радости нет</span>
-      </button>
-      <button class="state-card reveal" data-state="feminine">
-        <span class="ico">🌿</span>
+      </div>
+      <div class="state-card reveal">
+        <span class="ico">🌸</span>
         <span class="title">Хочу больше женственности</span>
-      </button>
+      </div>
     </div>
     <p class="section-lead reveal" style="margin-top:26px; margin-bottom:0;">Для каждого состояния я создала своё решение.</p>
+    <div class="btn-wrap reveal">
+      <a href="#free" class="btn">Пройти бесплатную диагностику</a>
+    </div>
   </div>
 </section>
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,-10 900,70 1200,30 L1200,0 L0,0 Z" fill="#C98A82"></path></svg></div>
 
-<!-- ============ БЕСПЛАТНО ============ -->
 <section class="free" id="free">
   <div class="wrap free-inner">
     <span class="eyebrow" style="color:#fff;">Первый шаг</span>
@@ -598,7 +613,6 @@
   </div>
 </section>
 
-<!-- ============ МИНИ-ПРОДУКТ ============ -->
 <section class="mini" id="mini">
   <div class="wrap">
     <div class="mini-inner">
@@ -611,14 +625,12 @@
           <li>✔ аудиопрактики</li>
           <li>✔ мягкое возвращение к себе</li>
         </ul>
-        <div class="price">490 ₽</div>
         <a href="#" class="btn" data-payment-stub>Хочу пройти тоже</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ РАБОТА СО МНОЙ ============ -->
 <section class="work" id="work">
   <div class="wrap">
     <span class="eyebrow reveal">Форматы</span>
@@ -630,17 +642,17 @@
         <p>если хочется разобраться именно со своей историей</p>
       </div>
       <div class="work-card reveal">
-        <div class="ico">🌿</div>
+        <div class="ico">🌱</div>
         <h3>Сопровождение</h3>
         <p>если хочется изменений не на один день</p>
       </div>
       <div class="work-card reveal">
-        <div class="ico">🌿</div>
+        <div class="ico">⛰️</div>
         <h3>Женские ретриты</h3>
         <p>если хочется глубокого погружения</p>
       </div>
       <div class="work-card reveal">
-        <div class="ico">🌿</div>
+        <div class="ico">🌸</div>
         <h3>Аромасопровождение</h3>
         <p>если хочется восстановить своё состояние через эфирные масла</p>
       </div>
@@ -650,7 +662,6 @@
 
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C300,70 900,-10 1200,30 L1200,60 L0,60 Z" fill="#FBF4EC"></path></svg></div>
 
-<!-- ============ ОТЗЫВЫ ============ -->
 <section class="reviews" id="reviews">
   <div class="wrap">
     <span class="eyebrow reveal">Истории</span>
@@ -659,36 +670,49 @@
     <div class="carousel reveal">
       <div class="carousel-track">
         <div class="carousel-slides" id="carouselSlides">
-          <div class="review-slide">
-            <div class="review-shot">
-              <img src="review1.jpg" alt="Отзыв Марины">
-            </div>
-            <div class="review-name">— Марина, 34 года</div>
-          </div>
-          <div class="review-slide">
-            <div class="review-shot">
-              <img src="review2.jpg" alt="Отзыв Алины">
-            </div>
-            <div class="review-name">— Алина, 29 лет</div>
-          </div>
-          <div class="review-slide">
-            <div class="review-shot">
-              <img src="review3.jpg" alt="Отзыв Ольги">
-            </div>
-            <div class="review-name">— Ольга, 41 год</div>
-          </div>
+          <!-- 15 отзывов -->
+          <div class="review-slide"><div class="review-shot"><img src="review1.jpg" alt="Отзыв"></div><div class="review-name">— Ольга</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review2.jpg" alt="Отзыв"></div><div class="review-name">— Марина</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review3.jpg" alt="Отзыв"></div><div class="review-name">— Алина</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review4.jpg" alt="Отзыв"></div><div class="review-name">— Екатерина</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review5.jpg" alt="Отзыв"></div><div class="review-name">— Анна</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review6.jpg" alt="Отзыв"></div><div class="review-name">— Ирина</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review7.jpg" alt="Отзыв"></div><div class="review-name">— Татьяна</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review8.jpg" alt="Отзыв"></div><div class="review-name">— Светлана</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review9.jpg" alt="Отзыв"></div><div class="review-name">— Наталья</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review10.jpg" alt="Отзыв"></div><div class="review-name">— Елена</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review11.jpg" alt="Отзыв"></div><div class="review-name">— Дарья</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review12.jpg" alt="Отзыв"></div><div class="review-name">— Виктория</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review13.jpg" alt="Отзыв"></div><div class="review-name">— Полина</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review14.jpg" alt="Отзыв"></div><div class="review-name">— Оксана</div></div>
+          <div class="review-slide"><div class="review-shot"><img src="review15.jpg" alt="Отзыв"></div><div class="review-name">— Александра</div></div>
         </div>
       </div>
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prevSlide" aria-label="Предыдущий отзыв">←</button>
+        <button class="carousel-btn" id="prevSlide">←</button>
         <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-btn" id="nextSlide" aria-label="Следующий отзыв">→</button>
+        <button class="carousel-btn" id="nextSlide">→</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ПРИГЛАШЕНИЕ / ПОДВАЛ ============ -->
+<section class="diplomas" id="diplomas">
+  <div class="wrap">
+    <span class="eyebrow reveal">Документы</span>
+    <h2 class="section-title reveal">Дипломы и сертификаты</h2>
+    <p class="section-lead reveal">Моё образование и повышение квалификации.</p>
+    <div class="diploma-grid">
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma1.jpg" alt="Диплом"></div><div class="diploma-name">Диплом мастера женских практик</div></div>
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma2.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат аромаэксперта</div></div>
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma3.jpg" alt="Удостоверение"></div><div class="diploma-name">Удостоверение ведущей женских кругов</div></div>
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma4.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат по аромапсихологии</div></div>
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma5.jpg" alt="Диплом"></div><div class="diploma-name">Диплом по работе с телесными практиками</div></div>
+      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma6.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат о повышении квалификации</div></div>
+    </div>
+  </div>
+</section>
+
 <footer class="invite" id="contact">
   <div class="wrap invite-inner">
     <div class="invite-copy reveal">
@@ -711,7 +735,7 @@
         <textarea id="inviteMessage" name="message" placeholder="Расскажи немного о своей ситуации (необязательно)"></textarea>
       </div>
       <button type="submit" class="btn">Записаться</button>
-      <p class="form-note"></p>
+      <p class="form-note">Форма — заглушка. Подключите Formspree или другой сервис, чтобы заявки приходили на почту.</p>
     </form>
   </div>
   <div class="wrap footer-bottom">
@@ -720,7 +744,6 @@
   </div>
 </footer>
 
-<!-- ============ МОДАЛКА: ЗАПИСАТЬСЯ ============ -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -747,7 +770,6 @@
   </div>
 </div>
 
-<!-- ============ МОДАЛКА: ДИАГНОСТИКА ============ -->
 <div class="modal-overlay" id="diagModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -775,7 +797,6 @@
   </div>
 </div>
 
-<!-- ============ МОДАЛКА: ОПИСАНИЕ СОСТОЯНИЯ ============ -->
 <div class="modal-overlay" id="stateModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -791,7 +812,6 @@
 (function(){
   "use strict";
 
-  /* ---------- бургер-меню ---------- */
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
 
@@ -819,21 +839,18 @@
     link.addEventListener('click', function(){ closeNav(); });
   });
 
-  // закрытие по клику вне меню
   document.addEventListener('click', function(e){
     if(nav.classList.contains('open') && !nav.contains(e.target) && !burger.contains(e.target)){
       closeNav();
     }
   });
 
-  // закрытие по Esc
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && nav.classList.contains('open')){
       closeNav();
     }
   });
 
-  /* ---------- scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
@@ -849,7 +866,6 @@
     revealEls.forEach(function(el){ el.classList.add('visible'); });
   }
 
-  /* ---------- модальные окна ---------- */
   var lastFocused = null;
 
   function openModal(id){
@@ -865,7 +881,6 @@
   function closeModal(modal){
     modal.classList.remove('open');
     document.body.style.overflow = '';
-    // сброс состояния формы/успеха при закрытии
     var form = modal.querySelector('form');
     var success = modal.querySelector('.success-box');
     if(form) form.style.display = '';
@@ -904,7 +919,6 @@
     }
   });
 
-  /* ---------- фейковая отправка форм в модалках ---------- */
   document.querySelectorAll('[data-fake-submit]').forEach(function(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -915,7 +929,6 @@
     });
   });
 
-  /* ---------- "PDF"-заглушка ---------- */
   document.querySelectorAll('[data-fake-pdf]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
@@ -923,7 +936,6 @@
     });
   });
 
-  /* ---------- кнопка оплаты — заглушка ---------- */
   document.querySelectorAll('[data-payment-stub]').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
@@ -931,41 +943,6 @@
     });
   });
 
-  /* ---------- карточки "с чего начать" ---------- */
-  var stateContent = {
-    tired: {
-      title: 'Я постоянно устаю',
-      text: 'Начни с восстановления базового ресурса: короткая консультация поможет понять, откуда уходит энергия, и с какого простого шага начать возвращать силы — без резких перемен и «через не могу».'
-    },
-    lost: {
-      title: 'Потеряла себя',
-      text: 'Хорошая точка входа — мини-продукт «7 дней к себе»: мягкий формат, который помогает шаг за шагом снова услышать себя, не требуя больших решений прямо сейчас.'
-    },
-    relationships: {
-      title: 'Не могу построить отношения',
-      text: 'Разовая консультация поможет разобраться, что именно происходит в отношениях и на что в первую очередь стоит обратить внимание — твоё или партнёра.'
-    },
-    good: {
-      title: 'Всё хорошо, но радости нет',
-      text: 'Если хочется больше лёгкости и радости — присмотрись к женским ретритам или аромасопровождению: это про то, чтобы усилить хорошее, а не чинить сломанное.'
-    },
-    feminine: {
-      title: 'Хочу больше женственности',
-      text: 'Сопровождение — формат, который бережно раскрывает мягкость, чувственность и контакт с собой через тело, практики и ароматы.'
-    }
-  };
-
-  document.querySelectorAll('.state-card').forEach(function(card){
-    card.addEventListener('click', function(){
-      var data = stateContent[card.getAttribute('data-state')];
-      if(!data) return;
-      document.getElementById('stateTitle').textContent = data.title;
-      document.getElementById('stateText').textContent = data.text;
-      openModal('stateModal');
-    });
-  });
-
-  /* ---------- форма приглашения (футер) ---------- */
   var inviteForm = document.getElementById('inviteForm');
   inviteForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -973,7 +950,6 @@
     inviteForm.reset();
   });
 
-  /* ---------- карусель отзывов ---------- */
   var track = document.getElementById('carouselSlides');
   var slides = track.querySelectorAll('.review-slide');
   var dotsWrap = document.getElementById('carouselDots');
@@ -998,7 +974,7 @@
   document.getElementById('prevSlide').addEventListener('click', function(){ goTo(current - 1); });
   document.getElementById('nextSlide').addEventListener('click', function(){ goTo(current + 1); });
 
-  /* ---------- ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ ---------- */
+  // Плавный скролл по меню
   document.querySelectorAll('.nav a, .hero-copy a[href^="#"], .invite-copy a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
       var targetId = this.getAttribute('href');
