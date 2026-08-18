@@ -296,58 +296,58 @@
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
+  /* ===== КАРУСЕЛЬ ОТЗЫВОВ (УВЕЛИЧЕННАЯ) ===== */
   .reviews{ padding:90px 0; background:var(--cream); }
-  .carousel-wrap{ position:relative; max-width:900px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
-  .carousel-track{ display:flex; transition:transform .4s ease; }
-  .review-slide{ min-width:100%; padding:4px; }
+  .carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .carousel-track{ display:flex; transition:transform .5s ease; }
+  .review-slide{ min-width:100%; padding:6px; }
   .review-shot{
-    background:var(--cream-deep);
     border-radius:var(--radius);
-    aspect-ratio:auto;
-    min-height:400px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:8px;
+    padding:0;
     overflow:hidden;
+    background:var(--cream-deep);
+    min-height:500px;
   }
   .review-shot img{
     width:100%;
     height:auto;
-    max-height:600px;
+    max-height:700px;
     object-fit:contain;
     border-radius:18px;
     display:block;
   }
-  .carousel-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
-  .dot{ width:10px; height:10px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
+  .carousel-dots{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+  .dot{ width:12px; height:12px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .dot.active{ background:var(--rose-deep); }
 
+  /* ===== КАРУСЕЛЬ ДИПЛОМОВ (УВЕЛИЧЕННАЯ) ===== */
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
-  .diploma-carousel-wrap{ position:relative; max-width:900px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
-  .diploma-track{ display:flex; transition:transform .4s ease; }
-  .diploma-slide{ min-width:100%; padding:4px; }
+  .diploma-carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .diploma-track{ display:flex; transition:transform .5s ease; }
+  .diploma-slide{ min-width:100%; padding:6px; }
   .diploma-placeholder{
-    background:var(--cream-deep);
     border-radius:var(--radius);
-    aspect-ratio:auto;
-    min-height:500px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:8px;
+    padding:0;
     overflow:hidden;
+    background:var(--cream);
+    min-height:600px;
   }
   .diploma-placeholder img{
     width:100%;
     height:auto;
-    max-height:650px;
+    max-height:800px;
     object-fit:contain;
-    border-radius:var(--radius-sm);
+    border-radius:18px;
     display:block;
   }
-  .diploma-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
-  .diploma-dot{ width:10px; height:10px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
+  .diploma-dots{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+  .diploma-dot{ width:12px; height:12px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .diploma-dot.active{ background:var(--rose-deep); }
 
   .invite{
@@ -459,9 +459,9 @@
   @media (max-width:550px){
     .start-grid{ grid-template-columns:1fr; }
     .review-shot{ min-height:300px; }
-    .review-shot img{ max-height:400px; }
+    .review-shot img{ max-height:450px; }
     .diploma-placeholder{ min-height:350px; }
-    .diploma-placeholder img{ max-height:450px; }
+    .diploma-placeholder img{ max-height:500px; }
   }
 </style>
 </head>
