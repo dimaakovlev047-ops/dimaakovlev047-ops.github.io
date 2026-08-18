@@ -318,18 +318,8 @@
     border-radius:18px;
     display:block;
   }
-  .carousel-controls{
-    display:flex; align-items:center; justify-content:center; gap:24px; margin-top:24px;
-  }
-  .carousel-btn{
-    width:44px; height:44px; border-radius:50%; background:var(--paper);
-    box-shadow:0 8px 18px -10px rgba(62,46,39,0.4);
-    display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--rose-deep);
-    transition:background .2s ease;
-  }
-  .carousel-btn:hover{ background:var(--peach); }
-  .carousel-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
-  .dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); cursor:pointer; }
+  .carousel-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
+  .dot{ width:10px; height:10px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .dot.active{ background:var(--rose-deep); }
 
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
@@ -354,25 +344,8 @@
     border-radius:var(--radius-sm);
     display:block;
   }
-  .diploma-name{
-    text-align:center;
-    margin-top:12px;
-    font-weight:600;
-    font-size:0.95rem;
-    color:var(--ink);
-  }
-  .diploma-controls{
-    display:flex; align-items:center; justify-content:center; gap:24px; margin-top:24px;
-  }
-  .diploma-btn{
-    width:44px; height:44px; border-radius:50%; background:var(--paper);
-    box-shadow:0 8px 18px -10px rgba(62,46,39,0.4);
-    display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--rose-deep);
-    transition:background .2s ease;
-  }
-  .diploma-btn:hover{ background:var(--peach); }
-  .diploma-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
-  .diploma-dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); cursor:pointer; }
+  .diploma-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:16px; }
+  .diploma-dot{ width:10px; height:10px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .diploma-dot.active{ background:var(--rose-deep); }
 
   .invite{
@@ -661,27 +634,23 @@
     <p class="section-lead reveal">То, что пишут мне после консультаций, ретритов и «7 дней к себе».</p>
     <div class="carousel-wrap reveal" id="reviewsCarousel">
       <div class="carousel-track" id="reviewsTrack">
-        <div class="review-slide"><div class="review-shot"><img src="review1.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review2.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review3.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review4.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review5.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review6.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review7.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review8.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review9.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review10.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review11.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review12.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review13.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review14.jpg" alt="Отзыв"></div></div>
-        <div class="review-slide"><div class="review-shot"><img src="review15.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение1.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение2.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение3.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение4.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение5.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение6.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение7.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение8.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение9.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение10.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение11.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение12.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение13.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение14.jpeg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="Изображение15.jpeg" alt="Отзыв"></div></div>
       </div>
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="reviewsPrev">←</button>
-        <div class="carousel-dots" id="reviewsDots"></div>
-        <button class="carousel-btn" id="reviewsNext">→</button>
-      </div>
+      <div class="carousel-dots" id="reviewsDots"></div>
     </div>
   </div>
 </section>
@@ -693,18 +662,14 @@
     <p class="section-lead reveal">Моё образование и повышение квалификации.</p>
     <div class="diploma-carousel-wrap reveal" id="diplomaCarousel">
       <div class="diploma-track" id="diplomaTrack">
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma1.jpg" alt="Диплом"></div><div class="diploma-name">Диплом мастера женских практик</div></div>
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma2.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат аромаэксперта</div></div>
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma3.jpg" alt="Удостоверение"></div><div class="diploma-name">Удостоверение ведущей женских кругов</div></div>
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma4.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат по аромапсихологии</div></div>
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma5.jpg" alt="Диплом"></div><div class="diploma-name">Диплом по работе с телесными практиками</div></div>
-        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma6.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат о повышении квалификации</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом1.jpeg" alt="Диплом"></div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом2.jpeg" alt="Диплом"></div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом3.jpeg" alt="Диплом"></div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом4.jpeg" alt="Диплом"></div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом5.jpeg" alt="Диплом"></div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="Диплом6.jpeg" alt="Диплом"></div></div>
       </div>
-      <div class="diploma-controls">
-        <button class="diploma-btn" id="diplomaPrev">←</button>
-        <div class="diploma-dots" id="diplomaDots"></div>
-        <button class="diploma-btn" id="diplomaNext">→</button>
-      </div>
+      <div class="diploma-dots" id="diplomaDots"></div>
     </div>
   </div>
 </section>
@@ -971,9 +936,6 @@
     });
   }
 
-  document.getElementById('reviewsPrev').addEventListener('click', function(){ goTo(current - 1); });
-  document.getElementById('reviewsNext').addEventListener('click', function(){ goTo(current + 1); });
-
   // ===== КАРУСЕЛЬ ДИПЛОМОВ =====
   var dTrack = document.getElementById('diplomaTrack');
   var dSlides = dTrack.querySelectorAll('.diploma-slide');
@@ -995,9 +957,6 @@
       d.classList.toggle('active', idx === dCurrent);
     });
   }
-
-  document.getElementById('diplomaPrev').addEventListener('click', function(){ dGoTo(dCurrent - 1); });
-  document.getElementById('diplomaNext').addEventListener('click', function(){ dGoTo(dCurrent + 1); });
 
   // ===== СВАЙП ДЛЯ ОТЗЫВОВ =====
   var rCarousel = document.getElementById('reviewsCarousel');
