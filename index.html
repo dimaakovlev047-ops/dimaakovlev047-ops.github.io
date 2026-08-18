@@ -297,24 +297,25 @@
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
   .reviews{ padding:90px 0; background:var(--cream); }
-  .carousel-wrap{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .carousel-wrap{ position:relative; max-width:900px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .carousel-track{ display:flex; transition:transform .4s ease; }
-  .review-slide{ min-width:100%; padding:6px; }
+  .review-slide{ min-width:100%; padding:4px; }
   .review-shot{
-    background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
-    border:2px dashed var(--rose);
+    background:var(--cream-deep);
     border-radius:var(--radius);
-    aspect-ratio:16/10;
+    aspect-ratio:auto;
+    min-height:400px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:0;
+    padding:8px;
     overflow:hidden;
   }
   .review-shot img{
     width:100%;
-    height:100%;
-    object-fit:cover;
+    height:auto;
+    max-height:600px;
+    object-fit:contain;
     border-radius:18px;
     display:block;
   }
@@ -323,24 +324,25 @@
   .dot.active{ background:var(--rose-deep); }
 
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
-  .diploma-carousel-wrap{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .diploma-carousel-wrap{ position:relative; max-width:900px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .diploma-track{ display:flex; transition:transform .4s ease; }
-  .diploma-slide{ min-width:100%; padding:6px; }
+  .diploma-slide{ min-width:100%; padding:4px; }
   .diploma-placeholder{
-    background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
-    border:2px dashed var(--rose);
+    background:var(--cream-deep);
     border-radius:var(--radius);
-    aspect-ratio:3/4;
+    aspect-ratio:auto;
+    min-height:500px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:0;
+    padding:8px;
     overflow:hidden;
   }
   .diploma-placeholder img{
     width:100%;
-    height:100%;
-    object-fit:cover;
+    height:auto;
+    max-height:650px;
+    object-fit:contain;
     border-radius:var(--radius-sm);
     display:block;
   }
@@ -456,6 +458,10 @@
 
   @media (max-width:550px){
     .start-grid{ grid-template-columns:1fr; }
+    .review-shot{ min-height:300px; }
+    .review-shot img{ max-height:400px; }
+    .diploma-placeholder{ min-height:350px; }
+    .diploma-placeholder img{ max-height:450px; }
   }
 </style>
 </head>
