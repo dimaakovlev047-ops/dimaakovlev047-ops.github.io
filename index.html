@@ -297,9 +297,8 @@
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
   .reviews{ padding:90px 0; background:var(--cream); }
-  .carousel{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; }
-  .carousel-track{ overflow:hidden; border-radius:var(--radius); }
-  .carousel-slides{ display:flex; transition:transform .5s ease; }
+  .carousel-wrap{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .carousel-track{ display:flex; transition:transform .4s ease; }
   .review-slide{ min-width:100%; padding:6px; }
   .review-shot{
     background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
@@ -307,13 +306,8 @@
     border-radius:var(--radius);
     aspect-ratio:16/10;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:8px;
-    color:var(--rose-deep);
-    font-weight:600;
-    text-align:center;
     padding:0;
     overflow:hidden;
   }
@@ -324,7 +318,6 @@
     border-radius:18px;
     display:block;
   }
-  .review-name{ font-family:var(--script); font-size:1.3rem; color:var(--ink); margin-top:6px; }
   .carousel-controls{
     display:flex; align-items:center; justify-content:center; gap:24px; margin-top:24px;
   }
@@ -340,45 +333,47 @@
   .dot.active{ background:var(--rose-deep); }
 
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
-  .diploma-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-  }
-  .diploma-card{
-    background:var(--paper);
-    border-radius:var(--radius);
-    padding:20px;
-    box-shadow:var(--shadow);
-    text-align:center;
-  }
-  .diploma-card .diploma-placeholder{
+  .diploma-carousel-wrap{ position:relative; max-width:760px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
+  .diploma-track{ display:flex; transition:transform .4s ease; }
+  .diploma-slide{ min-width:100%; padding:6px; }
+  .diploma-placeholder{
     background:repeating-linear-gradient(45deg, var(--cream-deep), var(--cream-deep) 14px, #ecdfd0 14px, #ecdfd0 28px);
     border:2px dashed var(--rose);
-    border-radius:var(--radius-sm);
+    border-radius:var(--radius);
     aspect-ratio:3/4;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:var(--rose-deep);
-    font-weight:600;
-    padding:20px;
-    text-align:center;
+    padding:0;
     overflow:hidden;
   }
-  .diploma-card .diploma-placeholder img{
+  .diploma-placeholder img{
     width:100%;
     height:100%;
     object-fit:cover;
     border-radius:var(--radius-sm);
     display:block;
   }
-  .diploma-card .diploma-name{
+  .diploma-name{
+    text-align:center;
     margin-top:12px;
     font-weight:600;
     font-size:0.95rem;
     color:var(--ink);
   }
+  .diploma-controls{
+    display:flex; align-items:center; justify-content:center; gap:24px; margin-top:24px;
+  }
+  .diploma-btn{
+    width:44px; height:44px; border-radius:50%; background:var(--paper);
+    box-shadow:0 8px 18px -10px rgba(62,46,39,0.4);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--rose-deep);
+    transition:background .2s ease;
+  }
+  .diploma-btn:hover{ background:var(--peach); }
+  .diploma-dots{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .diploma-dot{ width:8px; height:8px; border-radius:50%; background:var(--peach); cursor:pointer; }
+  .diploma-dot.active{ background:var(--rose-deep); }
 
   .invite{
     padding:100px 0 60px;
@@ -461,7 +456,6 @@
     .hero-photo{ order:-1; max-width:340px; margin:0 auto; }
     .start-grid{ grid-template-columns:repeat(2,1fr); }
     .work-grid{ grid-template-columns:repeat(2,1fr); }
-    .diploma-grid{ grid-template-columns:repeat(2,1fr); }
   }
 
   @media (max-width:820px){
@@ -482,7 +476,6 @@
     .burger{ display:flex; }
     .header-actions .btn span{ display:none; }
     .start-grid, .work-grid{ grid-template-columns:1fr; }
-    .diploma-grid{ grid-template-columns:1fr; }
     .mini-inner{ padding:30px; }
     .invite-inner{ gap:36px; }
     .footer-bottom{ flex-direction:column; }
@@ -502,7 +495,7 @@
       <a href="#about">Кто я</a>
       <a href="#start">С чего начать</a>
       <a href="#free">Бесплатно</a>
-      <a href="#mini">Мини-продукт</a>
+      <a href="#mini">7 дней к себе</a>
       <a href="#work">Работа со мной</a>
       <a href="#reviews">Отзывы</a>
       <a href="#diplomas">Дипломы</a>
@@ -521,7 +514,7 @@
   <div class="wrap hero-inner">
     <div class="hero-copy reveal">
       <span class="hero-eyebrow">Привет!</span>
-      <h1>Евгения Яковлева</h1>
+      <h1></h1>
       <p style="color:var(--ink-soft); margin-bottom:18px;">Если ты здесь, скорее всего, сейчас в твоей жизни один из таких периодов:</p>
       <ul class="hero-list">
         <li>ты устала жить в режиме "надо"</li>
@@ -617,7 +610,6 @@
   <div class="wrap">
     <div class="mini-inner">
       <div class="mini-text reveal">
-        <span class="eyebrow">Мини-продукт</span>
         <h2 class="section-title" style="margin-bottom:6px;">7 дней к себе</h2>
         <p style="color:var(--ink-soft);">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
         <ul class="mini-list">
@@ -667,31 +659,28 @@
     <span class="eyebrow reveal">Истории</span>
     <h2 class="section-title reveal">Отзывы</h2>
     <p class="section-lead reveal">То, что пишут мне после консультаций, ретритов и «7 дней к себе».</p>
-    <div class="carousel reveal">
-      <div class="carousel-track">
-        <div class="carousel-slides" id="carouselSlides">
-          <!-- 15 отзывов -->
-          <div class="review-slide"><div class="review-shot"><img src="review1.jpg" alt="Отзыв"></div><div class="review-name">— Ольга</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review2.jpg" alt="Отзыв"></div><div class="review-name">— Марина</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review3.jpg" alt="Отзыв"></div><div class="review-name">— Алина</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review4.jpg" alt="Отзыв"></div><div class="review-name">— Екатерина</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review5.jpg" alt="Отзыв"></div><div class="review-name">— Анна</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review6.jpg" alt="Отзыв"></div><div class="review-name">— Ирина</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review7.jpg" alt="Отзыв"></div><div class="review-name">— Татьяна</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review8.jpg" alt="Отзыв"></div><div class="review-name">— Светлана</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review9.jpg" alt="Отзыв"></div><div class="review-name">— Наталья</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review10.jpg" alt="Отзыв"></div><div class="review-name">— Елена</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review11.jpg" alt="Отзыв"></div><div class="review-name">— Дарья</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review12.jpg" alt="Отзыв"></div><div class="review-name">— Виктория</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review13.jpg" alt="Отзыв"></div><div class="review-name">— Полина</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review14.jpg" alt="Отзыв"></div><div class="review-name">— Оксана</div></div>
-          <div class="review-slide"><div class="review-shot"><img src="review15.jpg" alt="Отзыв"></div><div class="review-name">— Александра</div></div>
-        </div>
+    <div class="carousel-wrap reveal" id="reviewsCarousel">
+      <div class="carousel-track" id="reviewsTrack">
+        <div class="review-slide"><div class="review-shot"><img src="review1.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review2.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review3.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review4.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review5.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review6.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review7.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review8.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review9.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review10.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review11.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review12.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review13.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review14.jpg" alt="Отзыв"></div></div>
+        <div class="review-slide"><div class="review-shot"><img src="review15.jpg" alt="Отзыв"></div></div>
       </div>
       <div class="carousel-controls">
-        <button class="carousel-btn" id="prevSlide">←</button>
-        <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-btn" id="nextSlide">→</button>
+        <button class="carousel-btn" id="reviewsPrev">←</button>
+        <div class="carousel-dots" id="reviewsDots"></div>
+        <button class="carousel-btn" id="reviewsNext">→</button>
       </div>
     </div>
   </div>
@@ -702,13 +691,20 @@
     <span class="eyebrow reveal">Документы</span>
     <h2 class="section-title reveal">Дипломы и сертификаты</h2>
     <p class="section-lead reveal">Моё образование и повышение квалификации.</p>
-    <div class="diploma-grid">
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma1.jpg" alt="Диплом"></div><div class="diploma-name">Диплом мастера женских практик</div></div>
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma2.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат аромаэксперта</div></div>
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma3.jpg" alt="Удостоверение"></div><div class="diploma-name">Удостоверение ведущей женских кругов</div></div>
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma4.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат по аромапсихологии</div></div>
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma5.jpg" alt="Диплом"></div><div class="diploma-name">Диплом по работе с телесными практиками</div></div>
-      <div class="diploma-card reveal"><div class="diploma-placeholder"><img src="diploma6.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат о повышении квалификации</div></div>
+    <div class="diploma-carousel-wrap reveal" id="diplomaCarousel">
+      <div class="diploma-track" id="diplomaTrack">
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma1.jpg" alt="Диплом"></div><div class="diploma-name">Диплом мастера женских практик</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma2.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат аромаэксперта</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma3.jpg" alt="Удостоверение"></div><div class="diploma-name">Удостоверение ведущей женских кругов</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma4.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат по аромапсихологии</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma5.jpg" alt="Диплом"></div><div class="diploma-name">Диплом по работе с телесными практиками</div></div>
+        <div class="diploma-slide"><div class="diploma-placeholder"><img src="diploma6.jpg" alt="Сертификат"></div><div class="diploma-name">Сертификат о повышении квалификации</div></div>
+      </div>
+      <div class="diploma-controls">
+        <button class="diploma-btn" id="diplomaPrev">←</button>
+        <div class="diploma-dots" id="diplomaDots"></div>
+        <button class="diploma-btn" id="diplomaNext">→</button>
+      </div>
     </div>
   </div>
 </section>
@@ -812,6 +808,7 @@
 (function(){
   "use strict";
 
+  // ===== БУРГЕР =====
   var burger = document.getElementById('burger');
   var nav = document.getElementById('nav');
 
@@ -851,6 +848,7 @@
     }
   });
 
+  // ===== REVEAL =====
   var revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
@@ -866,6 +864,7 @@
     revealEls.forEach(function(el){ el.classList.add('visible'); });
   }
 
+  // ===== МОДАЛКИ =====
   var lastFocused = null;
 
   function openModal(id){
@@ -950,9 +949,10 @@
     inviteForm.reset();
   });
 
-  var track = document.getElementById('carouselSlides');
+  // ===== КАРУСЕЛЬ ОТЗЫВОВ =====
+  var track = document.getElementById('reviewsTrack');
   var slides = track.querySelectorAll('.review-slide');
-  var dotsWrap = document.getElementById('carouselDots');
+  var dotsWrap = document.getElementById('reviewsDots');
   var current = 0;
 
   slides.forEach(function(_, i){
@@ -971,10 +971,79 @@
     });
   }
 
-  document.getElementById('prevSlide').addEventListener('click', function(){ goTo(current - 1); });
-  document.getElementById('nextSlide').addEventListener('click', function(){ goTo(current + 1); });
+  document.getElementById('reviewsPrev').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('reviewsNext').addEventListener('click', function(){ goTo(current + 1); });
 
-  // Плавный скролл по меню
+  // ===== КАРУСЕЛЬ ДИПЛОМОВ =====
+  var dTrack = document.getElementById('diplomaTrack');
+  var dSlides = dTrack.querySelectorAll('.diploma-slide');
+  var dDotsWrap = document.getElementById('diplomaDots');
+  var dCurrent = 0;
+
+  dSlides.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.className = 'diploma-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Перейти к диплому ' + (i+1));
+    dot.addEventListener('click', function(){ dGoTo(i); });
+    dDotsWrap.appendChild(dot);
+  });
+
+  function dGoTo(i){
+    dCurrent = (i + dSlides.length) % dSlides.length;
+    dTrack.style.transform = 'translateX(-' + (dCurrent * 100) + '%)';
+    dDotsWrap.querySelectorAll('.diploma-dot').forEach(function(d, idx){
+      d.classList.toggle('active', idx === dCurrent);
+    });
+  }
+
+  document.getElementById('diplomaPrev').addEventListener('click', function(){ dGoTo(dCurrent - 1); });
+  document.getElementById('diplomaNext').addEventListener('click', function(){ dGoTo(dCurrent + 1); });
+
+  // ===== СВАЙП ДЛЯ ОТЗЫВОВ =====
+  var rCarousel = document.getElementById('reviewsCarousel');
+  var rStartX = 0;
+  var rDiff = 0;
+
+  rCarousel.addEventListener('touchstart', function(e){
+    rStartX = e.touches[0].clientX;
+  });
+
+  rCarousel.addEventListener('touchmove', function(e){
+    rDiff = e.touches[0].clientX - rStartX;
+  });
+
+  rCarousel.addEventListener('touchend', function(){
+    if(rDiff > 50) {
+      goTo(current - 1);
+    } else if(rDiff < -50) {
+      goTo(current + 1);
+    }
+    rDiff = 0;
+  });
+
+  // ===== СВАЙП ДЛЯ ДИПЛОМОВ =====
+  var dCarousel = document.getElementById('diplomaCarousel');
+  var dStartX = 0;
+  var dDiff = 0;
+
+  dCarousel.addEventListener('touchstart', function(e){
+    dStartX = e.touches[0].clientX;
+  });
+
+  dCarousel.addEventListener('touchmove', function(e){
+    dDiff = e.touches[0].clientX - dStartX;
+  });
+
+  dCarousel.addEventListener('touchend', function(){
+    if(dDiff > 50) {
+      dGoTo(dCurrent - 1);
+    } else if(dDiff < -50) {
+      dGoTo(dCurrent + 1);
+    }
+    dDiff = 0;
+  });
+
+  // ===== ПЛАВНЫЙ СКРОЛЛ =====
   document.querySelectorAll('.nav a, .hero-copy a[href^="#"], .invite-copy a[href^="#"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
       var targetId = this.getAttribute('href');
