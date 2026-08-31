@@ -273,8 +273,13 @@
     padding:40px;
     box-shadow:var(--shadow);
     margin-bottom:40px;
+    transition:transform .3s ease, box-shadow .3s ease;
   }
   .course-card:last-child{ margin-bottom:0; }
+  .course-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px -16px rgba(62,46,39,0.2);
+  }
   .course-card .course-title{
     font-family:var(--display);
     font-size:1.8rem;
@@ -285,6 +290,7 @@
     color:var(--ink-soft);
     font-size:1.05rem;
     margin-bottom:16px;
+    line-height:1.6;
   }
   .course-card .course-list{
     list-style:none;
@@ -296,11 +302,13 @@
     gap:10px;
     color:var(--ink-soft);
     padding:4px 0;
+    font-size:0.95rem;
   }
   .course-card .course-list li::before{
-    content:"✔";
+    content:"✦";
     color:var(--rose);
     font-weight:700;
+    font-size:1.2rem;
   }
   .course-card .course-meta{
     display:flex;
@@ -311,9 +319,19 @@
   }
   .course-card .course-meta span{
     background:var(--cream);
-    padding:4px 14px;
+    padding:4px 16px;
     border-radius:100px;
-    font-size:0.9rem;
+    font-size:0.85rem;
+    font-weight:600;
+  }
+  .course-card .course-price{
+    font-family:var(--display);
+    font-size:2rem;
+    color:var(--rose-deep);
+    margin:16px 0 8px;
+  }
+  .course-card .btn{
+    margin-top:8px;
   }
 
   .work{ padding:90px 0; background:var(--cream-deep); }
@@ -322,6 +340,11 @@
     background:var(--paper); border-radius:var(--radius-sm); padding:32px 24px;
     box-shadow:0 8px 20px -14px rgba(62,46,39,0.3);
     text-align:left;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .work-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 32px -16px rgba(62,46,39,0.2);
   }
   .work-card .ico{ font-size:2rem; margin-bottom:14px; }
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
@@ -621,7 +644,7 @@
     <span class="eyebrow reveal">Мои программы</span>
     <h2 class="section-title reveal">Курсы</h2>
 
-    <!-- КУРС 1: Знакомство с собой -->
+    <!-- КУРС 1: Знакомство с собой (с оплатой) -->
     <div class="course-card reveal">
       <h3 class="course-title">Знакомство с собой</h3>
       <p class="course-desc">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
@@ -630,10 +653,27 @@
         <li>аудиопрактики</li>
         <li>мягкое возвращение к себе</li>
       </ul>
+      <div class="course-price">490 ₽</div>
+      <button class="btn" onclick="openPaymentModal('Знакомство с собой')">Оплатить</button>
     </div>
 
-    <!-- КУРС 2: Опоры женщины -->
+    <!-- КУРС 2: Путь к себе (без оплаты) -->
     <div class="course-card reveal" style="background:var(--cream-deep);">
+      <h3 class="course-title">«Путь к себе»</h3>
+      <p class="course-desc">
+        Услышать свои настоящие желания.<br>
+        Создать свой маршрут изменений.<br>
+        Вернуть себе опору.
+      </p>
+      <ul class="course-list">
+        <li>Практики и задания</li>
+        <li>Диагностические прямые эфиры</li>
+        <li>Конкретные шаги в новое</li>
+      </ul>
+    </div>
+
+    <!-- КУРС 3: Опоры женщины (без оплаты) -->
+    <div class="course-card reveal">
       <h3 class="course-title">«Опоры женщины: возвращение к себе»</h3>
       <p class="course-desc">
         Услышать свои настоящие желания.<br>
@@ -657,21 +697,6 @@
         Открыть себя и начать жить из чувств.<br>
         Отпустить контроль и понять, с чего начать по-другому.
       </p>
-    </div>
-
-    <!-- КУРС 3: Путь к себе -->
-    <div class="course-card reveal">
-      <h3 class="course-title">«Путь к себе»</h3>
-      <p class="course-desc">
-        Услышать свои настоящие желания.<br>
-        Создать свой маршрут изменений.<br>
-        Вернуть себе опору.
-      </p>
-      <ul class="course-list">
-        <li>Практики и задания</li>
-        <li>Диагностические прямые эфиры</li>
-        <li>Конкретные шаги в новое</li>
-      </ul>
     </div>
 
   </div>
@@ -836,6 +861,39 @@
       <h3>Готово!</h3>
       <p>Твой гид уже ждёт тебя.<br><a href="#" data-fake-pdf>Открыть PDF-гид →</a></p>
       <p style="font-size:0.78rem;">Ссылка — заглушка. Загрузите PDF на Google Диск и вставьте сюда прямую ссылку.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА ОПЛАТЫ ===== -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePaymentModal()">✕</button>
+    
+    <div id="paymentFormView">
+      <h3>Оплата курса</h3>
+      <p class="sub" style="color:var(--ink-soft); margin-bottom:18px;">Введите ваши контакты, чтобы мы знали, кому отправить доступ.</p>
+      <form id="paymentForm">
+        <div class="field">
+          <label for="payName">Имя</label>
+          <input type="text" id="payName" placeholder="Ваше имя" required>
+        </div>
+        <div class="field">
+          <label for="payPhone">Телефон или Email</label>
+          <input type="text" id="payPhone" placeholder="+7 ___ ___-__-__ или email" required>
+        </div>
+        <input type="hidden" id="payCourse" value="">
+        <button type="submit" class="btn">Показать реквизиты</button>
+      </form>
+    </div>
+
+    <div id="paymentRequisitesView" style="display:none;">
+      <h3>Оплата 490 ₽</h3>
+      <p style="color:var(--ink-soft); margin-bottom:8px;">Переведите сумму по реквизитам:</p>
+      <p style="font-size:1.3rem; font-weight:700; color:var(--rose-deep);">2204 3204 3745 6710</p>
+      <p style="color:var(--ink-soft);">Получатель: <strong>Дмитрий Яковлев</strong></p>
+      <p style="font-size:0.9rem; color:var(--ink-soft); margin-top:12px;">После оплаты нажмите кнопку ниже.</p>
+      <button class="btn" onclick="confirmPayment()">Я оплатил(а)</button>
     </div>
   </div>
 </div>
@@ -1076,6 +1134,39 @@
       }
     });
   });
+
+  // ===== ОПЛАТА =====
+  window.openPaymentModal = function(courseName) {
+    document.getElementById('payCourse').value = courseName;
+    document.getElementById('paymentFormView').style.display = 'block';
+    document.getElementById('paymentRequisitesView').style.display = 'none';
+    document.getElementById('paymentForm').reset();
+    document.getElementById('paymentModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closePaymentModal = function() {
+    document.getElementById('paymentModal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('payName').value;
+    const phone = document.getElementById('payPhone').value;
+    const course = document.getElementById('payCourse').value;
+    
+    console.log('Заявка на оплату:', { name, phone, course });
+    
+    document.getElementById('paymentFormView').style.display = 'none';
+    document.getElementById('paymentRequisitesView').style.display = 'block';
+  });
+
+  window.confirmPayment = function() {
+    const name = document.getElementById('payName').value;
+    alert('✅ Спасибо, ' + name + '! Мы получили вашу оплату. Доступ к курсу будет отправлен в течение 15 минут.');
+    closePaymentModal();
+  };
 
 })();
 </script>
