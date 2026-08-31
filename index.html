@@ -266,24 +266,62 @@
   .free .btn{ background:#fff; color:var(--rose-deep); box-shadow:none; }
   .free .btn:hover{ background:var(--cream); }
 
-  .mini{ padding:90px 0; background:var(--cream); }
-  .mini-inner{
-    display:grid;
-    grid-template-columns:1fr;
-    text-align:center;
+  /* ===== КУРСЫ ===== */
+  .courses{ padding:90px 0; background:var(--cream); }
+  .course-card{
     background:var(--paper);
     border-radius:var(--radius);
-    padding:50px;
+    padding:40px;
     box-shadow:var(--shadow);
+    margin-bottom:40px;
   }
-  .mini-list{
+  .course-card:last-child{ margin-bottom:0; }
+  .course-card .course-title{
+    font-family:var(--display);
+    font-size:1.8rem;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .course-card .course-desc{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    margin-bottom:16px;
+  }
+  .course-card .course-list{
+    list-style:none;
+    margin:16px 0;
+  }
+  .course-card .course-list li{
     display:flex;
-    flex-direction:column;
-    gap:14px;
-    margin:22px 0 30px;
     align-items:center;
+    gap:10px;
+    color:var(--ink-soft);
+    padding:4px 0;
   }
-  .mini-list li{ display:flex; gap:12px; color:var(--ink-soft); }
+  .course-card .course-list li::before{
+    content:"✔";
+    color:var(--rose);
+    font-weight:700;
+  }
+  .course-card .course-meta{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:16px 0;
+    color:var(--ink-soft);
+  }
+  .course-card .course-meta span{
+    background:var(--cream);
+    padding:4px 14px;
+    border-radius:100px;
+    font-size:0.9rem;
+  }
+  .course-card .course-price{
+    font-family:var(--display);
+    font-size:2rem;
+    color:var(--rose-deep);
+    margin:16px 0;
+  }
 
   .work{ padding:90px 0; background:var(--cream-deep); }
   .work-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
@@ -296,7 +334,6 @@
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
-  /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
   .reviews{ padding:90px 0; background:var(--cream); }
   .carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .carousel-track{ display:flex; transition:transform .5s ease; }
@@ -323,7 +360,6 @@
   .dot{ width:12px; height:12px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .dot.active{ background:var(--rose-deep); }
 
-  /* ===== КАРУСЕЛЬ ДИПЛОМОВ ===== */
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
   .diploma-carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .diploma-track{ display:flex; transition:transform .5s ease; }
@@ -427,7 +463,7 @@
   .success-box a{ color:var(--rose-deep); font-weight:700; text-decoration:underline; }
 
   @media (max-width:980px){
-    .hero-inner, .about-inner, .mini-inner, .invite-inner{ grid-template-columns:1fr; }
+    .hero-inner, .about-inner, .invite-inner{ grid-template-columns:1fr; }
     .hero-photo{ order:-1; max-width:340px; margin:0 auto; }
     .start-grid{ grid-template-columns:repeat(2,1fr); }
     .work-grid{ grid-template-columns:repeat(2,1fr); }
@@ -451,7 +487,6 @@
     .burger{ display:flex; }
     .header-actions .btn span{ display:none; }
     .start-grid, .work-grid{ grid-template-columns:1fr; }
-    .mini-inner{ padding:30px; }
     .invite-inner{ gap:36px; }
     .footer-bottom{ flex-direction:column; }
   }
@@ -462,6 +497,8 @@
     .review-shot img{ max-height:450px; }
     .diploma-placeholder{ min-height:350px; }
     .diploma-placeholder img{ max-height:500px; }
+    .course-card{ padding:24px; }
+    .course-card .course-title{ font-size:1.4rem; }
   }
 </style>
 </head>
@@ -474,7 +511,7 @@
       <a href="#about">Кто я</a>
       <a href="#start">С чего начать</a>
       <a href="#free">Бесплатно</a>
-      <a href="#mini">7 дней к себе</a>
+      <a href="#courses">Курсы</a>
       <a href="#work">Работа со мной</a>
       <a href="#reviews">Отзывы</a>
       <a href="#diplomas">Дипломы</a>
@@ -585,27 +622,52 @@
   </div>
 </section>
 
-<!-- ===== МИНИ-ПРОДУКТ ===== -->
-<section class="mini" id="mini">
+<!-- ===== КУРСЫ ===== -->
+<section class="courses" id="courses">
   <div class="wrap">
-    <div class="mini-inner">
-      <div class="mini-text reveal">
-        <h2 class="section-title" style="margin-bottom:6px;">7 дней к себе</h2>
-        <p style="color:var(--ink-soft);">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
-        <ul class="mini-list">
-          <li>✔ ежедневные задания</li>
-          <li>✔ аудиопрактики</li>
-          <li>✔ мягкое возвращение к себе</li>
-        </ul>
-        <div class="payment-block">
-          <p style="font-size:1.1rem; margin-bottom:8px;"><strong>Оплата 490 ₽</strong></p>
-          <p style="color:var(--ink-soft);">Переведите сумму на карту:</p>
-          <p style="font-size:1.2rem; font-weight:700; color:var(--rose-deep);">2204 3204 3745 6710</p>
-          <p style="color:var(--ink-soft);">Получатель: <strong>Дмитрий Яковлев</strong></p>
-          <p style="font-size:0.9rem; color:var(--ink-soft); margin-top:8px;">После оплаты нажмите кнопку «Я оплатил(а)»</p>
-          <button onclick="alert('✅ Спасибо за оплату! Доступ к курсу будет отправлен в течение 15 минут.')" class="btn" style="margin-top:10px;">Я оплатил(а)</button>
-        </div>
+    <span class="eyebrow reveal">Обучение</span>
+    <h2 class="section-title reveal">Курсы</h2>
+    
+    <!-- Курс 1: Знакомство с собой -->
+    <div class="course-card reveal">
+      <h3 class="course-title">Знакомство с собой</h3>
+      <p class="course-desc">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
+      <ul class="course-list">
+        <li>ежедневные задания</li>
+        <li>аудиопрактики</li>
+        <li>мягкое возвращение к себе</li>
+      </ul>
+      <div class="course-price">490 ₽</div>
+      <button class="btn" onclick="openPaymentModal('Знакомство с собой')">Оплатить</button>
+    </div>
+
+    <!-- Курс 2: Опоры женщины -->
+    <div class="course-card reveal" style="background:var(--cream-deep);">
+      <h3 class="course-title">«Опоры женщины: возвращение к себе»</h3>
+      <p class="course-desc">
+        Услышать свои настоящие желания.<br>
+        Создать свой маршрут изменений.<br>
+        Вернуть себе опору.
+      </p>
+      <ul class="course-list">
+        <li>Практики и задания</li>
+        <li>Диагностические прямые эфиры</li>
+        <li>Конкретные шаги в новое</li>
+        <li>Сопровождение</li>
+      </ul>
+      <div class="course-meta">
+        <span>📅 21 день</span>
       </div>
+      <p style="color:var(--ink-soft); margin:12px 0;">
+        Восстановим контакт с телом и с чувствами.<br>
+        Определим свои желания и научимся желать.<br>
+        Укрепим внутреннюю опору и создадим свой маршрут изменений.<br>
+        Новый уровень отношений с собой, с мужчиной, с миром.<br>
+        Откроем себя и начнём жить из чувств.<br>
+        Отпустим контроль и поймём, с чего начать по-другому.
+      </p>
+      <div class="course-price">490 ₽</div>
+      <button class="btn" onclick="openPaymentModal('Опоры женщины: возвращение к себе')">Оплатить</button>
     </div>
   </div>
 </section>
@@ -645,7 +707,7 @@
   <div class="wrap">
     <span class="eyebrow reveal">Истории</span>
     <h2 class="section-title reveal">Отзывы</h2>
-    <p class="section-lead reveal">То, что пишут мне после консультаций, ретритов и «7 дней к себе».</p>
+    <p class="section-lead reveal">То, что пишут мне после консультаций, ретритов и курсов.</p>
     <div class="carousel-wrap reveal" id="reviewsCarousel">
       <div class="carousel-track" id="reviewsTrack">
         <div class="review-slide"><div class="review-shot"><img src="Изображение1.jpeg" alt="Отзыв"></div></div>
@@ -719,6 +781,7 @@
   </div>
 </footer>
 
+<!-- ===== МОДАЛКА: ЗАПИСАТЬСЯ ===== -->
 <div class="modal-overlay" id="bookingModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -745,6 +808,7 @@
   </div>
 </div>
 
+<!-- ===== МОДАЛКА: ДИАГНОСТИКА ===== -->
 <div class="modal-overlay" id="diagModal">
   <div class="modal">
     <button class="modal-close" data-close-modal>✕</button>
@@ -772,13 +836,35 @@
   </div>
 </div>
 
-<div class="modal-overlay" id="stateModal">
+<!-- ===== МОДАЛКА: ОПЛАТА ===== -->
+<div class="modal-overlay" id="paymentModal">
   <div class="modal">
-    <button class="modal-close" data-close-modal>✕</button>
-    <div class="modal-body">
-      <h3 id="stateTitle"></h3>
-      <p id="stateText"></p>
-      <button class="btn" data-open-modal="bookingModal" data-close-first>Записаться на консультацию</button>
+    <button class="modal-close" onclick="closePaymentModal()">✕</button>
+    
+    <div id="paymentFormView">
+      <h3>Оплата курса</h3>
+      <p class="sub" style="color:var(--ink-soft); margin-bottom:18px;">Введите ваши контакты, чтобы мы знали, кому отправить доступ.</p>
+      <form id="paymentForm">
+        <div class="field">
+          <label for="payName">Имя</label>
+          <input type="text" id="payName" placeholder="Ваше имя" required>
+        </div>
+        <div class="field">
+          <label for="payPhone">Телефон или Email</label>
+          <input type="text" id="payPhone" placeholder="+7 ___ ___-__-__ или email" required>
+        </div>
+        <input type="hidden" id="payCourse" value="">
+        <button type="submit" class="btn">Показать реквизиты</button>
+      </form>
+    </div>
+
+    <div id="paymentRequisitesView" style="display:none;">
+      <h3>Оплата 490 ₽</h3>
+      <p style="color:var(--ink-soft); margin-bottom:8px;">Переведите сумму по реквизитам:</p>
+      <p style="font-size:1.3rem; font-weight:700; color:var(--rose-deep);">2204 3204 3745 6710</p>
+      <p style="color:var(--ink-soft);">Получатель: <strong>Дмитрий Яковлев</strong></p>
+      <p style="font-size:0.9rem; color:var(--ink-soft); margin-top:12px;">После оплаты нажмите кнопку ниже.</p>
+      <button class="btn" onclick="confirmPayment()">Я оплатил(а)</button>
     </div>
   </div>
 </div>
@@ -914,13 +1000,6 @@
     });
   });
 
-  document.querySelectorAll('[data-payment-stub]').forEach(function(link){
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      alert('Заглушка оплаты. Подключите здесь ссылку ЮKassa / Tinkoff / другого платёжного сервиса.');
-    });
-  });
-
   var inviteForm = document.getElementById('inviteForm');
   inviteForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -1034,6 +1113,39 @@
       }
     });
   });
+
+  // ===== ОПЛАТА =====
+  window.openPaymentModal = function(courseName) {
+    document.getElementById('payCourse').value = courseName;
+    document.getElementById('paymentFormView').style.display = 'block';
+    document.getElementById('paymentRequisitesView').style.display = 'none';
+    document.getElementById('paymentForm').reset();
+    document.getElementById('paymentModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closePaymentModal = function() {
+    document.getElementById('paymentModal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('payName').value;
+    const phone = document.getElementById('payPhone').value;
+    const course = document.getElementById('payCourse').value;
+    
+    console.log('Заявка на оплату:', { name, phone, course });
+    
+    document.getElementById('paymentFormView').style.display = 'none';
+    document.getElementById('paymentRequisitesView').style.display = 'block';
+  });
+
+  window.confirmPayment = function() {
+    const name = document.getElementById('payName').value;
+    alert('✅ Спасибо, ' + name + '! Мы получили вашу оплату. Доступ к курсу будет отправлен в течение 15 минут.');
+    closePaymentModal();
+  };
 
 })();
 </script>
