@@ -324,15 +324,6 @@
     font-size:0.85rem;
     font-weight:600;
   }
-  .course-card .course-price{
-    font-family:var(--display);
-    font-size:2rem;
-    color:var(--rose-deep);
-    margin:16px 0 8px;
-  }
-  .course-card .btn{
-    margin-top:8px;
-  }
 
   .work{ padding:90px 0; background:var(--cream-deep); }
   .work-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
@@ -644,7 +635,7 @@
     <span class="eyebrow reveal">Мои программы</span>
     <h2 class="section-title reveal">Курсы</h2>
 
-    <!-- КУРС 1: Знакомство с собой (с оплатой) -->
+    <!-- КУРС 1: Знакомство с собой (без цены, только кнопка оплаты) -->
     <div class="course-card reveal">
       <h3 class="course-title">Знакомство с собой</h3>
       <p class="course-desc">Если ты поняла, что давно живёшь для всех, кроме себя — этот небольшой курс поможет снова услышать себя.</p>
@@ -653,7 +644,6 @@
         <li>аудиопрактики</li>
         <li>мягкое возвращение к себе</li>
       </ul>
-      <div class="course-price">490 ₽</div>
       <button class="btn" onclick="openPaymentModal('Знакомство с собой')">Оплатить</button>
     </div>
 
