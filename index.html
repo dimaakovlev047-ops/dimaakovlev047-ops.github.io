@@ -296,7 +296,7 @@
   .work-card h3{ font-size:1.08rem; margin-bottom:8px; }
   .work-card p{ font-size:0.9rem; color:var(--ink-soft); }
 
-  /* ===== КАРУСЕЛЬ ОТЗЫВОВ (УВЕЛИЧЕННАЯ) ===== */
+  /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
   .reviews{ padding:90px 0; background:var(--cream); }
   .carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .carousel-track{ display:flex; transition:transform .5s ease; }
@@ -323,7 +323,7 @@
   .dot{ width:12px; height:12px; border-radius:50%; background:var(--peach); cursor:pointer; transition:background .2s; }
   .dot.active{ background:var(--rose-deep); }
 
-  /* ===== КАРУСЕЛЬ ДИПЛОМОВ (УВЕЛИЧЕННАЯ) ===== */
+  /* ===== КАРУСЕЛЬ ДИПЛОМОВ ===== */
   .diplomas{ padding:90px 0; background:var(--cream-deep); }
   .diploma-carousel-wrap{ position:relative; max-width:1000px; margin:0 auto; overflow:hidden; touch-action:pan-y; }
   .diploma-track{ display:flex; transition:transform .5s ease; }
@@ -585,6 +585,7 @@
   </div>
 </section>
 
+<!-- ===== МИНИ-ПРОДУКТ ===== -->
 <section class="mini" id="mini">
   <div class="wrap">
     <div class="mini-inner">
@@ -596,7 +597,14 @@
           <li>✔ аудиопрактики</li>
           <li>✔ мягкое возвращение к себе</li>
         </ul>
-        <a href="#" class="btn" data-payment-stub>Хочу пройти тоже</a>
+        <div class="payment-block">
+          <p style="font-size:1.1rem; margin-bottom:8px;"><strong>Оплата 490 ₽</strong></p>
+          <p style="color:var(--ink-soft);">Переведите сумму на карту:</p>
+          <p style="font-size:1.2rem; font-weight:700; color:var(--rose-deep);">2204 3204 3745 6710</p>
+          <p style="color:var(--ink-soft);">Получатель: <strong>Дмитрий Яковлев</strong></p>
+          <p style="font-size:0.9rem; color:var(--ink-soft); margin-top:8px;">После оплаты нажмите кнопку «Я оплатил(а)»</p>
+          <button onclick="alert('✅ Спасибо за оплату! Доступ к курсу будет отправлен в течение 15 минут.')" class="btn" style="margin-top:10px;">Я оплатил(а)</button>
+        </div>
       </div>
     </div>
   </div>
